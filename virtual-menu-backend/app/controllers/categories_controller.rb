@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      render json: @category, status: :created, location: @category
+      render json: @category.serialize_one, status: :created, location: @category.serialize_one
     else
       render json: @category.errors, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   def update
     if @category.update(category_params)
-      render json: @category
+      render json: @category.serialize_one
     else
       render json: @category.errors, status: :unprocessable_entity
     end
@@ -47,6 +47,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.fetch(:category, {})
+      params.fetch(:category, {}).permit(:name, :resturant_id)
     end
 end

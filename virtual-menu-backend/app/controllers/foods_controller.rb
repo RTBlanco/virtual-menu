@@ -28,7 +28,7 @@ class FoodsController < ApplicationController
   # PATCH/PUT /foods/1
   def update
     if @food.update(food_params)
-      render json: @food
+      render json: @food.serialize
     else
       render json: @food.errors, status: :unprocessable_entity
     end

@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :update, :destroy]
-  skip_before_action :authorized, only: [:create]
+  # skip_before_action :authorized, only: [:create]
 
   # GET /admins
   def index
@@ -11,7 +11,7 @@ class AdminsController < ApplicationController
 
   # GET /admins/1
   def show
-    render json: @admin
+    render json: @admin.serialize
   end
 
   # POST /admins
@@ -26,10 +26,11 @@ class AdminsController < ApplicationController
   # end
 
   def create
-    @admin = @admin.create(@admin_params)
+    @admin = Admin.create(admin_params)
+    binding.pry
     if @admin.valid?
       @token = encode_token(admin_id: @admin.id)
-      render json: { admin: @admin, jwt: @token }, status: :created
+      render json: { admin: @admin.serialize, jwt: @token }, status: :created
     else
       render json: { error: 'failed to create @admin' }, status: :not_acceptable
     end
@@ -38,7 +39,7 @@ class AdminsController < ApplicationController
   # PATCH/PUT /admins/1
   def update
     if @admin.update(admin_params)
-      render json: @admin
+      render json: @admin.serialize
     else
       render json: @admin.errors, status: :unprocessable_entity
     end
@@ -57,7 +58,8 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
-      # params.fetch(:admin, {})
-      params.permit(:username, :name, :password)
+      # password diget is not wokring 
+      params.fetch(:admin, {}).permit(:username, :name, :password, :resturant_id)
+      # params.permit(:username, :name, :password)
     end
 end
