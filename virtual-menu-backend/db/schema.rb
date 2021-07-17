@@ -42,11 +42,11 @@ ActiveRecord::Schema.define(version: 2021_07_17_093643) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
+    t.string "username"
+    t.string "password_digest"
     t.integer "resturant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
-    t.string "username"
     t.index ["resturant_id"], name: "index_admins_on_resturant_id"
   end
 

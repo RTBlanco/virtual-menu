@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   belongs_to :resturant
   has_many :foods, dependent: :destroy
+  accepts_nested_attributes_for :foods, reject_if: proc { |attributes| attributes['name'].blank? }
 
   def serialize 
     {

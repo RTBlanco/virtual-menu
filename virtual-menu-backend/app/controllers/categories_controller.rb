@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   def create
+    binding.pry
     @category = Category.new(category_params)
 
     if @category.save
@@ -47,6 +48,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.fetch(:category, {}).permit(:name, :resturant_id)
+      params.fetch(:category, {}).permit(:name, :resturant_id, foods_attributes:[:name, :cost, :calories])
     end
 end
