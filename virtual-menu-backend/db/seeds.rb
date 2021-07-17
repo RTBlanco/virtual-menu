@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+res = Resturant.create(name: "Mcdonals")
+res.admin = Admin.new(name: "Ronny", username: "TheKing", password: "12345")
+res.save
+res.categories.build(name: "Drinks")
+res.categories.first.foods.build(name: "Coke", cost: 1.00, calories: 250)
+res.save
