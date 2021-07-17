@@ -1,10 +1,13 @@
 class FoodsController < ApplicationController
-  before_action :set_food, only: [:show, :update, :destroy]
+  before_action :set_category
+  before_action :set_food,  only: [:show, :update, :destroy]
   skip_before_action :authorized, only: [:index, :show]
 
   # GET /foods
   def index
-    @foods = Food.all.map{|food| food.serialize}
+    # binding.pry
+    
+    @foods = @category.foods.map{|food| food.serialize}
 
     render json: @foods
   end
@@ -28,7 +31,7 @@ class FoodsController < ApplicationController
   # PATCH/PUT /foods/1
   def update
     if @food.update(food_params)
-      render json: @food.serialize
+      render json: @food
     else
       render json: @food.errors, status: :unprocessable_entity
     end
@@ -42,12 +45,15 @@ class FoodsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_food
-      @food = Food.find(params[:id])
+      @food = @category.foods.find(params[:id])
     end
 
+    def set_category
+      @category = Category.find(food_params[:category_id])
+    end
     # Only allow a list of trusted parameters through.
     def food_params
       # params.fetch(:food, {})
-      params.require(:food).permit(:name, :cost, :calories, :category_id)
+      params.permit(:name, :cost, :calories, :category_id)
     end
 end

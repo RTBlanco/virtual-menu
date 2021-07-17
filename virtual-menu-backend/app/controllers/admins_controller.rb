@@ -27,7 +27,7 @@ class AdminsController < ApplicationController
 
   def create
     @admin = Admin.new(admin_params)
-    binding.pry
+    # binding.pry
     if @admin.save
       @token = encode_token(admin_id: @admin.id)
       render json: { admin: @admin.serialize, jwt: @token }, status: :created
@@ -48,6 +48,7 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   def destroy
     @admin.destroy
+    render json:@admin.serialize
   end
 
   private
@@ -58,7 +59,6 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
-      # password diget is not wokring 
       # params.fetch(:admin, {}).permit(:username, :name, :password, :resturant_id)
       params.permit(:username, :name, :password, :resturant_id)
     end
