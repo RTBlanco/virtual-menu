@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   resources :resturants do
-    resources :admins 
+    resources :admins
+    post '/login', to: "auth#create" 
     resources :categories do 
       resources :foods
     end 

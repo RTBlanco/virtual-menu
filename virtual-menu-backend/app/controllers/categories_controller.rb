@@ -1,16 +1,17 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy]
+  skip_before_action :authorized, only: [:index, :show]
 
   # GET /categories
   def index
-    @categories = Category.all
+    @categories = Category.all.map{|cat| cat.serialize}
 
     render json: @categories
   end
 
   # GET /categories/1
   def show
-    render json: @category
+    render json: @category.serialize_one
   end
 
   # POST /categories

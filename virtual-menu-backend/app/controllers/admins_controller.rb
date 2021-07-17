@@ -1,9 +1,10 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :update, :destroy]
+  skip_before_action :authorized, only: [:create]
 
   # GET /admins
   def index
-    @admins = Admin.all
+    @admins = Admin.all.map{|admin| admin.serialize}
 
     render json: @admins
   end
@@ -14,13 +15,23 @@ class AdminsController < ApplicationController
   end
 
   # POST /admins
-  def create
-    @admin = Admin.new(admin_params)
+  # def create
+  #   @admin = Admin.new(admin_params)
 
-    if @admin.save
-      render json: @admin, status: :created, location: @admin
+  #   if @admin.save
+  #     render json: @admin, status: :created, location: @admin
+  #   else
+  #     render json: @admin.errors, status: :unprocessable_entity
+  #   end
+  # end
+
+  def create
+    @admin = @admin.create(@admin_params)
+    if @admin.valid?
+      @token = encode_token(admin_id: @admin.id)
+      render json: { admin: @admin, jwt: @token }, status: :created
     else
-      render json: @admin.errors, status: :unprocessable_entity
+      render json: { error: 'failed to create @admin' }, status: :not_acceptable
     end
   end
 
@@ -46,6 +57,7 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
-      params.fetch(:admin, {})
+      # params.fetch(:admin, {})
+      params.permit(:username, :name, :password)
     end
 end

@@ -1,9 +1,10 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :update, :destroy]
+  skip_before_action :authorized, only: [:index, :show]
 
   # GET /foods
   def index
-    @foods = Food.all
+    @foods = Food.all.map{|food| food.serialize}
 
     render json: @foods
   end
@@ -18,7 +19,7 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
 
     if @food.save
-      render json: @food, status: :created, location: @food
+      render json: @food.serialize, status: :created, location: @food.serialize
     else
       render json: @food.errors, status: :unprocessable_entity
     end
@@ -46,6 +47,7 @@ class FoodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def food_params
-      params.fetch(:food, {})
+      # params.fetch(:food, {})
+      params.require(:food).permit(:name, :cost, :calories, :category_id)
     end
 end
