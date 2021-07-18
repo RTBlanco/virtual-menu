@@ -1,7 +1,15 @@
 class Category < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   belongs_to :resturant
   has_many :foods, dependent: :destroy
+  has_one_attached :image
+
   accepts_nested_attributes_for :foods, reject_if: proc { |attributes| attributes['name'].blank? }
+
+  def get_image_url
+    url_for(self.image)
+  end
 
   def serialize 
     {
