@@ -15,9 +15,9 @@ function App() {
 
   const restaurant = useSelector( (state) => {
     return {
-      name: state.name,
-      loading: state.loading,
-      categories: state.categories
+      name: state.restaurant.name,
+      loading: state.restaurant.loading,
+      categories: state.restaurant.categories
     }
   })
 
@@ -32,6 +32,7 @@ function App() {
       return restaurant.name
     }
   }
+
 
   return (
     <Router>

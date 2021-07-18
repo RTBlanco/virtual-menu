@@ -27,25 +27,48 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
   }
 }
 
-function adminReducer(state = {name: '', username: "", loading: false}, action ) {
+function adminReducer(state = {id:"",  name: "", username: "", token:"", loading: false}, action ) {
   switch(action.type) {
-    case "lOGGING_IN":
+    case "LOGGING_IN":
       return {
         ...state,
         loading: true
       }
 
-    case 'LOGED_IN':
+    case 'LOGGED_IN':
+      
       return {
+        id: action.id,
+        name: action.name,
+        username: action.username,
+        token: action.token,
+        loading: false
+      }
+
+    case 'GETTING_ADMIN':
+      return {
+        ...state,
+        loading: true
+      }
+
+    case "ADD_ADMIN":
+      return{
+        ...state,
+        id: action.id,
         name: action.name,
         username: action.username,
         loading: false
       }
 
+    case "LOGOUT":
+      window.sessionStorage.clear()
+      return {id:"",  name: "", username: "", token:"", loading: false}
+
     default:
       return state
   }
 }
+
 
 
 

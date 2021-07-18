@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :update, :destroy]
+  # before_action :authenicate_user, only: [:show]
   # skip_before_action :authorized, only: [:create]
 
   # GET /admins

@@ -1,4 +1,5 @@
 class AuthController < ApplicationController
+  # include ::ActionController::Cookies
   skip_before_action :authorized, only: [:create]
 
   def create
@@ -7,6 +8,7 @@ class AuthController < ApplicationController
     if @admin && @admin.authenticate(admin_login_params[:password])
       # encode token comes from ApplicationController
       token = encode_token({ admin_id: @admin.id })
+      # cookies.signed[:jwt] = {value: token, httponly: tr}
       render json: { admin: @admin, jwt: token }, status: :accepted
     else
       render json: { message: 'Invalid username or password' }, status: :unauthorized

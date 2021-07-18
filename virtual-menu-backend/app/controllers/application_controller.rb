@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  # include ::ActionController::Cookies
   before_action :authorized
 
   def encode_token(payload)
@@ -30,6 +31,11 @@ class ApplicationController < ActionController::API
       @admin = Admin.find_by(id: admin_id)
     end
   end
+
+  # def authenticate_user
+  #   jwt = cookies.signed[:jwt]
+  #   decode_jwt(jwt)
+  # end
 
   def logged_in?
     !!current_user
