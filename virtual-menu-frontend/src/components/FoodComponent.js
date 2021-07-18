@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Food = ({match}) => {
+const FoodComponent = ({match}) => {
   return (
     <>
       <p>this is a food</p>
@@ -9,4 +9,4 @@ const Food = ({match}) => {
   )
 }
 
-export default Food;
+export default FoodComponent;

@@ -1,16 +1,17 @@
 class ResturantsController < ApplicationController
   before_action :set_resturant, only: [:show, :update, :destroy]
+  skip_before_action :authorized, only: [:index, :show]
 
   # GET /resturants
   def index
-    @resturants = Resturant.all
+    @resturants = Resturant.all.map{| res | res.serialize}
 
     render json: @resturants
   end
 
   # GET /resturants/1
   def show
-    render json: @resturant
+    render json: @resturant.serialize
   end
 
   # POST /resturants

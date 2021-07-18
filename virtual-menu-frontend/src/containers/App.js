@@ -1,21 +1,47 @@
 import Name from "../components/Name";
 import NavBar from "../components/NavBar";
-import Food from "../components/Food";
+import FoodComponent from "../components/FoodComponent";
 import Foods from "./Foods";
 import Home from "./Home";
+import { fetchResturant } from "../actions/restaurantActions";
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
 
-function App() {
+function App(props) {
+
+  const dispatch = useDispatch(); 
+
+  const restaurant = useSelector( (state) => {
+    return {
+      name: state.name,
+      loading: state.loading,
+      categories: state.categories
+    }
+  })
+
+  useEffect(() => {
+    dispatch(fetchResturant())
+  },[])
+
+  const handleLoading = () => {
+    if (restaurant.loading) {
+      return "Loading"
+    } else {
+      return restaurant.name
+    }
+  }
+
   return (
     <Router>
+      {console.log(restaurant)}
       <div className="App">
-        <Name />
+        <Name name={handleLoading()}/>
         <NavBar />
-        {/* <Categories /> */}
         <Switch>
           <Route exact path='/' component={Home}/>
+          <Route path='/:category_name/:name' render={match => <FoodComponent {...match} /> }/>
           <Route path='/:name' component={match => <Foods {...match}/>} />
-          <Route path="/:category_name/:name" render={match => <Food {...match}/> }/>
         </Switch>
       </div>
     </Router>
@@ -23,3 +49,4 @@ function App() {
 }
 
 export default App;
+
