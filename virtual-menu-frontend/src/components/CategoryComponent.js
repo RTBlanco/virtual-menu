@@ -1,7 +1,7 @@
 
-const CategoryComponent = (category) => {
+const CategoryComponent = ({category}) => {
   return (
-    <div>
+    <div className="admin-category">
       {category.name}
     </div>
   )

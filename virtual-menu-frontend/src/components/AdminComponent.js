@@ -33,6 +33,7 @@ const AdminComponent = () => {
     return restaurant.categories.map(cat => <CategoryComponent key={cat.id} category={cat}/>)
   }
 
+  console.log(restaurant)
   return (
     <div>
       {admin.loading ? "loading" : `Welcome ${admin.name}`}

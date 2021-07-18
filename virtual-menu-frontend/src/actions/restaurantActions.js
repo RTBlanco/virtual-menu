@@ -58,7 +58,7 @@ export function fetchAdmin(){
     .then(response => response.json())
     .then(req => {
       console.log(req)
-      dispatch({type: "ADD_ADMIN", id: req.id, name: req.name, username: req.name})
+      dispatch({type: "ADD_ADMIN", id: req.id, name: req.name, username: req.username})
     })
   }
 }
