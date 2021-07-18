@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
 
-function App(props) {
+function App() {
 
   const dispatch = useDispatch(); 
 
