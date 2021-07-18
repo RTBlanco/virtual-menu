@@ -34,14 +34,13 @@ function App(props) {
 
   return (
     <Router>
-      {console.log(restaurant)}
       <div className="App">
         <Name name={handleLoading()}/>
         <NavBar />
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route path='/:category_name/:name' render={match => <FoodComponent {...match} /> }/>
-          <Route path='/:name' component={match => <Foods {...match}/>} />
+          <Route exact path='/' component={() => <Home categories={restaurant.categories}/>}/>
+          <Route path='/:category_name/:name' render={match => <FoodComponent {...match} categories={restaurant.categories} /> }/>
+          <Route path='/:name' component={match => <Foods {...match} categories={restaurant.categories}/>} />
         </Switch>
       </div>
     </Router>
