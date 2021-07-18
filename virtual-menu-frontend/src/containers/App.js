@@ -1,4 +1,4 @@
-import Name from "../components/Name";
+import HeaderComponent from "../components/HeaderComponent";
 import NavBar from "../components/NavBar";
 import FoodComponent from "../components/FoodComponent";
 import Foods from "./Foods";
@@ -25,19 +25,19 @@ function App() {
     dispatch(fetchResturant())
   },[])
 
-  const handleLoading = () => {
-    if (restaurant.loading) {
-      return "Loading"
-    } else {
-      return restaurant.name
-    }
-  }
+  // const handleLoading = () => {
+  //   if (restaurant.loading) {
+  //     return "Loading"
+  //   } else {
+  //     return restaurant
+  //   }
+  // }
 
 
   return (
     <Router>
       <div className="App">
-        <Name name={handleLoading()}/>
+        <HeaderComponent resturant={restaurant}/>
         <NavBar />
         <Switch>
           <Route exact path='/' component={() => <Home categories={restaurant.categories}/>}/>
