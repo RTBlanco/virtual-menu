@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const Categories = ({categories}) => {
+
+  const fakeCats = [
+    {name: "Drink"},
+    {name: "Pasta"},
+    {name: "Steak"}
+  ]
+
   return (
     <>
       <p>list of categories</p>
@@ -13,6 +20,13 @@ const Categories = ({categories}) => {
             </div>
           </Link>
         ))} */}
+        {fakeCats.map(cat => (
+          <Link to={`/${cat.name}`}>
+            <div>
+              {cat.name}
+            </div>
+          </Link>
+        ))}
       </div>
     </>
   )
