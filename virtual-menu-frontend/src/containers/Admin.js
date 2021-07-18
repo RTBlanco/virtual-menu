@@ -27,6 +27,7 @@ const Admin = () => {
   return (
     <>
     {loggedIn ? <AdminComponent /> : <Login login={login}/>}
+    
     </>
   )
 }

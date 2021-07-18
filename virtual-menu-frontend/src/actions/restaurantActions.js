@@ -1,8 +1,9 @@
 
 
 const BASE_URL = 'http://localhost:3000'
-const jwt = window.sessionStorage.getItem('token')
-const admin_id = window.sessionStorage.getItem('id')
+let jwt 
+let admin_id
+
 
 export function LogOut() {
   return (dispatch) => {
@@ -45,6 +46,8 @@ export function fetchLogin(admin) {
 }
 
 export function fetchAdmin(){
+  admin_id = window.sessionStorage.getItem('id')
+  jwt = window.sessionStorage.getItem('token')
   return (dispatch) => {
     dispatch({type: 'GETTING_ADMIN'})
     fetch(`${BASE_URL}/resturants/1/admins/${admin_id}`,{

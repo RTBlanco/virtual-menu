@@ -36,7 +36,8 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
       }
 
     case 'LOGGED_IN':
-      
+      window.sessionStorage.setItem('token', action.token)
+      window.sessionStorage.setItem('id', action.id)
       return {
         id: action.id,
         name: action.name,
