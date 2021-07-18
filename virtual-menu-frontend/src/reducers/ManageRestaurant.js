@@ -1,7 +1,13 @@
 import { combineReducers } from "redux";
 
-export function restaurantReducer(state = {name: "", categories: [], foods: [], loading: false}, action) {
-  // console.log(action)
+const rootReducer = combineReducers({
+  restaurant: restaurantReducer,
+  admin: adminReducer
+})
+
+export default rootReducer;
+
+function restaurantReducer(state = {name: "", categories: [], foods: [], loading: false}, action) {
   switch(action.type) {
     case 'LOADING_RESTAURANT':
       return {
@@ -20,6 +26,27 @@ export function restaurantReducer(state = {name: "", categories: [], foods: [], 
       return state
   }
 }
+
+function adminReducer(state = {name: '', username: "", loading: false}, action ) {
+  switch(action.type) {
+    case "lOGGING_IN":
+      return {
+        ...state,
+        loading: true
+      }
+
+    case 'LOGED_IN':
+      return {
+        name: action.name,
+        username: action.username,
+        loading: false
+      }
+
+    default:
+      return state
+  }
+}
+
 
 
 // const rootReducer = combineReducers({

@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import FoodComponent from "../components/FoodComponent";
 import Foods from "./Foods";
 import Home from "./Home";
+import Admin from "./Admin";
 import { fetchResturant } from "../actions/restaurantActions";
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -39,6 +40,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path='/' component={() => <Home categories={restaurant.categories}/>}/>
+          <Route exact path='/admin' component={Admin} />
           <Route path='/:category_name/:name' render={match => <FoodComponent {...match} categories={restaurant.categories} /> }/>
           <Route path='/:name' component={match => <Foods {...match} categories={restaurant.categories}/>} />
         </Switch>
