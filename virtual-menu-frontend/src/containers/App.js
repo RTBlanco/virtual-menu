@@ -8,6 +8,7 @@ import { fetchResturant } from "../actions/restaurantActions";
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
+import './App.css'
 
 function App() {
 

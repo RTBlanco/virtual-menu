@@ -36,7 +36,7 @@ const NavBar = ({categories}) => {
     } else {
       return (
         <nav id="navbar">
-          <NavLink to='/' className="nav-anchor">
+          <NavLink to='/' className="nav-anchor" id='home'>
               Home 
           </NavLink>
           {renderCategoryLinks()}
