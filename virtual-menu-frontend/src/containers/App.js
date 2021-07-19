@@ -38,7 +38,7 @@ function App() {
     <Router>
       <div className="App">
         <HeaderComponent resturant={restaurant}/>
-        <NavBar />
+        <NavBar categories={restaurant.categories}/>
         <Switch>
           <Route exact path='/' component={() => <Home categories={restaurant.categories}/>}/>
           <Route exact path='/admin' component={Admin} />

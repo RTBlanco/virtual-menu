@@ -3,6 +3,7 @@ import Login from "../components/Login";
 import {fetchLogin } from "../actions/restaurantActions";
 import AdminComponent from "../components/AdminComponent";
 
+
 const Admin = () => {
 
   const dispatch = useDispatch();
@@ -27,7 +28,6 @@ const Admin = () => {
   return (
     <>
     {loggedIn ? <AdminComponent /> : <Login login={login}/>}
-    
     </>
   )
 }
