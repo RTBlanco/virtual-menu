@@ -37,7 +37,7 @@ const NavBar = ({categories}) => {
       return (
         <nav id="navbar">
           <NavLink to='/' className="nav-anchor" id='home'>
-              Home 
+            <h3>Home</h3> 
           </NavLink>
           {renderCategoryLinks()}
         </nav>
@@ -49,7 +49,7 @@ const NavBar = ({categories}) => {
     return categories.map(cat =>{
       return (
         <NavLink key={cat.id} to={`/${cat.name}`} >
-            {cat.name}
+            <h4>{cat.name}</h4>
         </NavLink>
       )
     })
