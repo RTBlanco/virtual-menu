@@ -24,13 +24,13 @@
   text-decoration: none;
   /* border-right: 1px solid black; */
 }
-.categories {
+.display {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.category-card {
+.card {
   width: 400px;
   height: 200px;
   border: 1px solid rgb(75, 75, 75);

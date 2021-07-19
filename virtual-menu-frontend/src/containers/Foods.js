@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import FoodCard from '../components/FoodCard';
 
 const Foods = ({match, categories, loading}) => {
 
@@ -16,13 +17,16 @@ const Foods = ({match, categories, loading}) => {
   return (
     <>
       <p>this is the list of foods for {match.params.name} </p>
-      {category.foods.map(food => (
-        <Link key={food.id} to={`/${match.params.name}/${food.name}`}>
-          <div>
-            {food.name}
-          </div>
-        </Link>
-      ))}
+      <div className="display"> 
+        {category.foods.map(food => (
+          <Link key={food.id} to={`/${match.params.name}/${food.name}`}>
+            {/* <div>
+              {food.name}
+            </div> */}
+            <FoodCard food={food}/>
+          </Link>
+        ))}
+      </div>
   </>
 )
 }

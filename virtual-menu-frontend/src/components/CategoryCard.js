@@ -1,7 +1,7 @@
 
 const CategoryCard = ({category}) => {
   return (
-    <div class="category-card">
+    <div class="card">
       <h4>{category.name}</h4>
     </div>
   )
