@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoryCard from '../components/CategoryCard';
 import { Link } from "react-router-dom";
 
 const Categories = ({categories}) => {
@@ -12,12 +13,10 @@ const Categories = ({categories}) => {
   return (
     <>
       <p>list of categories</p>
-      <div>
+      <div className="categories">
         {categories.map(cat => (
           <Link key={cat.id} to={`/${cat.name}`}>
-            <div>
-              {cat.name}
-            </div>
+            <CategoryCard category={cat} />
           </Link>
         ))}
         {/* {fakeCats.map(cat => (
