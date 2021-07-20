@@ -1,43 +1,17 @@
 import React from 'react';
+import AdminNav from './AdminNav';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router';
 
 const NavBar = ({categories}) => {
-
-  // const [sticking, setSticking] = useState(false)
-
-  // window.onscroll = function() {scrollFunction()}
-  // // let navbar = document.getElementById('navbar');
-  // let navbar = useRef(null)
-  // let sticky = navbar.offsetTop;
-
-  // console.log(window.pageYOffset)
-  // console.log(navbar.current.offsetTop)
-
-  // function scrollFunction() {
-  //   // console.log('running')
-  //   if (window.pageYOffset >= sticky) {
-  //     // console.log('true')
-  //     // navbar.current.classList.add("sticky")
-  //     setSticking(true)
-  //   } else {
-  //     // console.log('false')
-  //     // navbar.current.classList.remove("sticky");
-  //     setSticking(false)
-  //   }
-  // }
-
   
   const currentPath = useLocation()
   
   const showIfNotAdmin = () =>{
     if (currentPath.pathname === '/admin') {
       
-      return (
-        <nav id='navbar'>
-          <h3>Admin Panel</h3>
-        </nav>
-      )
+      return <AdminNav />
+      
     } else {
       return (
         <nav id="navbar">
