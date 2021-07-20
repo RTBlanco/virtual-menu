@@ -111,6 +111,17 @@
 .admin-info {
   margin-top: 10px;
 }
+
+.admin-category div {
+  background-color: #333;
+  border-top-right-radius: 7px 8px;
+  border-top-left-radius: 7px 8px;
+  text-align: center;
+  color: #f2f2f2;
+  font-weight: 600;
+  font-size: large;
+}
+
 /* Page content */
 /* .content {
   padding: 16px;
