@@ -35,10 +35,12 @@ const AdminComponent = () => {
 
   console.log(restaurant)
   return (
-    <div>
-      {admin.loading ? "loading" : `Welcome ${admin.name}`}
-      <button onClick={() => dispatch(LogOut())}>Log Out</button>
-      <div>
+    <div id="admin-panel">
+      <div className="admin-info">
+        {admin.loading ? "loading" : `Welcome ${admin.name}`}
+        <button onClick={() => dispatch(LogOut())}>Log Out</button>
+      </div>
+      <div className="admin-control">
         {restaurant.loading ? 'loading....': renderCategories()}
       </div>
     </div>

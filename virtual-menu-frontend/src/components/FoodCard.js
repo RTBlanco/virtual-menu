@@ -1,7 +1,7 @@
 
 const FoodCard = ({food}) => {
   return (
-    <div class="card">
+    <div className="card">
       <h4>{food.name}</h4>
     </div>
   )
