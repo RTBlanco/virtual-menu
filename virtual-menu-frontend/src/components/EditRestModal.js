@@ -12,10 +12,16 @@ const EditRestModal = ({resturant, modalIsOpen, closeModal}) => {
   } 
   
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(state)
+    e.preventDefault();
+    closeModal()
+    console.log("submit",state)
   }
 
+  const handleClick = (e) => {
+    e.preventDefault()
+    closeModal()
+    console.log('delete')
+  }
 
   return (
     <Modal
@@ -30,13 +36,8 @@ const EditRestModal = ({resturant, modalIsOpen, closeModal}) => {
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Resturant: </label>
             <input onChange={handleOnChange} type="text" name="category" id="category-name" defaultValue={state} />
-            {/* <div className="food-cost-cal">
-              <label htmlFor="cost">Cost:</label>
-              <input type="text" name='cost' id='cost' />
-              <label htmlFor="cals">Cals:</label>
-              <input type="text" name='cals' id='cals' /> 
-            </div> */}
-            <button onClick={closeModal} className="create-btn" type="Submit" >Create!</button>
+            <button className="create-btn" type="submit" >Edit!</button>
+            <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>
         </div>
     </Modal>

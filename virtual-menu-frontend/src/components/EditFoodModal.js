@@ -14,7 +14,14 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
+    closeModal()
     console.log(state)
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    closeModal()
+    console.log('delete')
   }
 
   const showCurrency = () => {
@@ -45,7 +52,8 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
               <input type="text" name='calories' id='calories' defaultValue={state.cals}/>
               {/* Image goes hear  */}
             </div>
-            <button onClick={closeModal} className="create-btn" type="Submit" >Edit!</button>
+            <button className="create-btn" type="Submit" >Edit!</button>
+            <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>
         </div>
     </Modal>

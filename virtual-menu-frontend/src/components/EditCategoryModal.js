@@ -10,7 +10,14 @@ const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
+    closeModal()
     console.log(state)
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    closeModal()
+    console.log('delete')
   }
 
   return (
@@ -26,7 +33,8 @@ const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Category: </label>
             <input onChange={handleOnChange} type="text" name="category" id="category-name" value={state}/>
-            <button onClick={closeModal} className="create-btn" type="Submit" >Edit!</button>
+            <button className="create-btn" type="Submit" >Edit!</button>
+            <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>
         </div>
     </Modal>
