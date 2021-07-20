@@ -15,7 +15,6 @@
 
 /* Navbar links */
 #navbar a {
-  
   /* float: left;
   /* display: block; */
   color: #f2f2f2; 
@@ -36,6 +35,7 @@
   align-items: center;
   width: 90%;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .card {
@@ -53,6 +53,27 @@
 .display a {
   text-decoration: none;
   color: #333;
+}
+
+#about {
+  text-align: center;
+  margin: 0 5% 0 5%;
+}
+
+.food-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(75, 75, 75);
+  margin: 20px 10px 0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 20px grey
+}
+
+.food-info {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
 }
 /* Page content */
 /* .content {

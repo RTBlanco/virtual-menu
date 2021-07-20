@@ -15,19 +15,13 @@ const Foods = ({match, categories, loading}) => {
   }
 
   return (
-    <>
-      <p>this is the list of foods for {match.params.name} </p>
-      <div className="display"> 
-        {category.foods.map(food => (
-          <Link key={food.id} to={`/${match.params.name}/${food.name}`}>
-            {/* <div>
-              {food.name}
-            </div> */}
-            <FoodCard food={food}/>
-          </Link>
-        ))}
-      </div>
-  </>
+    <div className="display"> 
+      {category.foods.map(food => (
+        <Link key={food.id} to={`/${match.params.name}/${food.name}`}>
+          <FoodCard food={food}/>
+        </Link>
+      ))}
+    </div>
 )
 }
 

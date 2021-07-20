@@ -11,14 +11,25 @@ const FoodComponent = ({match, categories, loading}) => {
   }
 
   let food = category.foods.find(food => food.name === match.params.name)
+  
+  const showCurrency = () => {
+
+    const Money = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+
+    return Money.format(food.cost)
+  }
 
   return (
-    <>
-      <p>this is a food</p>
-      <p>{food.name}</p>
-      <p>{food.cost}</p>
-      <p>{food.calories}</p>
-    </>
+    <div className="food-display">
+      <h3>{food.name}</h3>
+      <div className="food-info">
+        <span>{food.calories} Cals</span>
+        <span>Cost: {showCurrency()}</span>
+      </div>
+    </div>
   )
 }
 
