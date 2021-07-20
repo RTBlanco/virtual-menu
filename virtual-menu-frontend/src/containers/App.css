@@ -151,3 +151,14 @@
 .new-cat-btn:active {
   transform: scale(0.99 ,0.99);
 }
+
+.edit-cat-btn {
+  width: 30px;
+  height: 30px;
+  /* margin-top: 5px; */
+  margin-left: 40%;
+  text-decoration: none;
+  border: none;
+  background-color: #333;
+  /* color: #f2f2f2; */
+}

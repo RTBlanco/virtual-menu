@@ -38,7 +38,7 @@ const AdminComponent = () => {
   return (
     <div id="admin-panel">
       {/* <AddButton /> */}
-      <button className="new-cat-btn">New Category</button>
+      <button onClick={() => window.alert("Modal should open ")} className="new-cat-btn">New Category</button>
       <div className="admin-control">
         {restaurant.loading ? 'loading....': renderCategories()}
       </div>
