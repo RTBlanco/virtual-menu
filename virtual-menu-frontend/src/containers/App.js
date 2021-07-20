@@ -26,14 +26,6 @@ function App() {
     dispatch(fetchResturant())
   },[])
 
-  // const handleLoading = () => {
-  //   if (restaurant.loading) {
-  //     return "Loading"
-  //   } else {
-  //     return restaurant
-  //   }
-  // }
-
 
   return (
     <Router>
