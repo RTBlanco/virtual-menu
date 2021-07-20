@@ -1,36 +1,39 @@
+import { useState } from 'react';
 import Modal from 'react-modal';
 
-const NewCategoryModal = ({modalIsOpen, subtitle, afterOpenModal, closeModal}) => {
+const NewCategoryModal = ({modalIsOpen, closeModal}) => {
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
+  const [state, setState] = useState('')
+
+  const handleOnChange = (e) => {
+    setState(e.target.value)
+  } 
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(state)
+  }
 
   return (
     <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
+        // style={customStyles}
         contentLabel="Example Modal"
+        className="new-cat-modal"
+        overlayClassName="new-cat-modal-overlay"
       >
-      <h2>Hello</h2>
-      <button onClick={closeModal}>close</button>
-      <div>I am a modal</div>
-      <form>
-        <input />
-        <button>tab navigation</button>
-        <button>stays</button>
-        <button>inside</button>
-        <button>the modal</button>
-      </form>
+        <div className="new-category-model">
+          <div className="new-cat-header">New Category</div>
+          <form onSubmit={handleSubmit} className="new-cat-form">
+            <label htmlFor="category-name">Name of Category: </label>
+            <input onChange={handleOnChange} type="text" name="category" id="category-name" />
+            <button className="create-btn" type="Submit" >Create!</button>
+          </form>
+          {/* <button onClick={closeModal}>close</button>
+          <div>I am a modal</div> */}
+        </div>
     </Modal>
   )
 }
