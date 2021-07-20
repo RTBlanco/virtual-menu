@@ -109,7 +109,6 @@
 }
 
 
-
 .admin-category div {
   background-color: #333;
   border-top-right-radius: 7px 8px;
@@ -118,6 +117,10 @@
   color: #f2f2f2;
   font-weight: 600;
   font-size: large;
+}
+
+.plus-icon {
+  height: 24px;
 }
 
 /* Page content */
