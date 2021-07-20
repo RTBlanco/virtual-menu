@@ -1,8 +1,9 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchAdmin } from "../actions/restaurantActions";
-import { LogOut } from "../actions/restaurantActions";
+// import { LogOut } from "../actions/restaurantActions";
 import CategoryComponent from './CategoryComponent'
+import { ReactComponent as AddButton } from "../assests/iconmonstr-plus-6.svg";
 
 
 const AdminComponent = () => {
@@ -36,6 +37,8 @@ const AdminComponent = () => {
   console.log(restaurant)
   return (
     <div id="admin-panel">
+      {/* <AddButton /> */}
+      <button className="new-cat-btn">New Category</button>
       <div className="admin-control">
         {restaurant.loading ? 'loading....': renderCategories()}
       </div>

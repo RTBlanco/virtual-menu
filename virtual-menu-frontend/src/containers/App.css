@@ -131,3 +131,23 @@
   text-decoration: none;
   border: none;
 }
+
+.new-cat-btn {
+  width: 81%;
+  height: 45px;
+  margin-top: 10px;
+  background-color: rgb(45, 185, 45);
+  border: 1px solid;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: large;
+  color: #333;
+}
+
+/* .new-cat-btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} */
+
+.new-cat-btn:active {
+  transform: scale(0.99 ,0.99);
+}
