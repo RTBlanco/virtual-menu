@@ -1,12 +1,29 @@
-import { useEffect } from "react"
+import { useEffect, useState} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchAdmin } from "../actions/restaurantActions";
 // import { LogOut } from "../actions/restaurantActions";
 import CategoryComponent from './CategoryComponent'
 import { ReactComponent as AddButton } from "../assests/iconmonstr-plus-6.svg";
+import NewCategoryModal from "./NewCategoryModal";
 
 
 const AdminComponent = () => {
+  let subtitle;
+
+  const [modalIsOpen, setIsOpen] = useState(false)
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const dispatch = useDispatch();
 
@@ -37,8 +54,9 @@ const AdminComponent = () => {
   console.log(restaurant)
   return (
     <div id="admin-panel">
+      <NewCategoryModal afterOpenModal={afterOpenModal} closeModal={closeModal} subtitle={subtitle} modalIsOpen={modalIsOpen}/>
       {/* <AddButton /> */}
-      <button onClick={() => window.alert("Modal should open ")} className="new-cat-btn">New Category</button>
+      <button onClick={openModal} className="new-cat-btn">New Category</button>
       <div className="admin-control">
         {restaurant.loading ? 'loading....': renderCategories()}
       </div>

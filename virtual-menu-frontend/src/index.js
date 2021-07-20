@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
 import rootReducer from './reducers/ManageRestaurant';
-
+import Modal from 'react-modal'
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware} from 'redux';
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
-
+Modal.setAppElement('#root')
+ 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
