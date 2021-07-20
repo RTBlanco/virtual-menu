@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import Modal from 'react-modal';
+import { useState } from "react"
+import Modal from 'react-modal'
 
-const NewCategoryModal = ({modalIsOpen, closeModal}) => {
-
-  const [state, setState] = useState('')
+const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
+  const [state, setState] = useState(category.name)
 
   const handleOnChange = (e) => {
     setState(e.target.value)
@@ -23,15 +22,15 @@ const NewCategoryModal = ({modalIsOpen, closeModal}) => {
         overlayClassName="new-cat-modal-overlay"
       >
         <div className="new-category-model">
-          <div className="new-cat-header">New Category</div>
+          <div className="new-cat-header">Edit Category</div>
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Category: </label>
-            <input onChange={handleOnChange} type="text" name="category" id="category-name" />
-            <button onClick={closeModal} className="create-btn" type="Submit" >Create!</button>
+            <input onChange={handleOnChange} type="text" name="category" id="category-name" value={state}/>
+            <button onClick={closeModal} className="create-btn" type="Submit" >Edit!</button>
           </form>
         </div>
     </Modal>
   )
 }
 
-export default NewCategoryModal;
+export default EditCategoryModal;
