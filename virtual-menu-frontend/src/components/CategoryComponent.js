@@ -1,10 +1,12 @@
 import {ReactComponent as EditBtn } from '../assests/edit-svgrepo-com.svg';
 import EditCategoryModal from './EditCategoryModal';
+import AdminFoodComponent from './AdminFoodComponent';
 import { useState } from 'react';
 
 const CategoryComponent = ({category}) => {
 
   const [modalIsOpen, setIsOpen] = useState(false)
+  // const [FoodIsOpen, setFoodIsOpen]
 
   const openModal = () => {
     setIsOpen(true);
@@ -14,13 +16,8 @@ const CategoryComponent = ({category}) => {
     setIsOpen(false);
   }
 
-
-  const handleOnClick = (food) => {
-    window.alert(`open edit model ${food.name}`)
-  }
-
   const renderfoods = () => {
-    return category.foods.map(food => <button onClick={() => handleOnClick(food)} key={food.id} className="category-food">{food.name}</button>)
+    return category.foods.map(food => <AdminFoodComponent key={food.id} food={food} />)
   }
 
   return (

@@ -7,8 +7,8 @@ import NewCategoryModal from "./NewCategoryModal";
 
 const AdminComponent = () => {
 
-  const [modalIsOpen, setIsOpen] = useState(false)
   const dispatch = useDispatch();
+  const [modalIsOpen, setIsOpen] = useState(false)
 
   const openModal = () => {
     setIsOpen(true);
