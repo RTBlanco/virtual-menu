@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchAdmin } from "../actions/restaurantActions";
 import { LogOut } from "../actions/restaurantActions";
-import { ReactComponent as PlusIcon } from "../assests/iconmonstr-plus-6.svg";
+import { ReactComponent as LogOutIcon } from "../assests/logout-svgrepo-com.svg";
 
 const AdminNav = () => {
 
@@ -27,8 +27,8 @@ const AdminNav = () => {
       return (
         <>
           <h3>{admin.loading ? "loading" : `Welcome ${admin.name}`}</h3>
-          <PlusIcon className="plus-icon" />
-          <button onClick={() => dispatch(LogOut())}>Log Out</button>
+          {/* <PlusIcon className="plus-icon" /> */}
+          <button className="logout-btn" onClick={() => dispatch(LogOut())}><LogOutIcon/></button>
         </>
       )
     } else {
