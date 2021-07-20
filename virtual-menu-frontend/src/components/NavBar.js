@@ -32,7 +32,12 @@ const NavBar = ({categories}) => {
   
   const showIfNotAdmin = () =>{
     if (currentPath.pathname === '/admin') {
-      return <h2>Admin</h2>
+      
+      return (
+        <nav id='navbar'>
+          <h3>Admin Panel</h3>
+        </nav>
+      )
     } else {
       return (
         <nav id="navbar">

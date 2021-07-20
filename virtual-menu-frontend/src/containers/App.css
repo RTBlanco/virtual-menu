@@ -23,6 +23,11 @@
   text-decoration: none;
   /* border-right: 1px solid black; */
 }
+
+#navbar h3 {
+  color: #f2f2f2; 
+}
+
 .display {
   /* display: flex; */
   /* justify-content: space-around; */
