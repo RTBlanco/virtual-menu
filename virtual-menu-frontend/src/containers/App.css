@@ -25,20 +25,35 @@
   /* border-right: 1px solid black; */
 }
 .display {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* justify-content: space-around; */
+  /* flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  grid-gap: 20px;
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 400px;
   height: 200px;
   border: 1px solid rgb(75, 75, 75);
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
   box-shadow: 2px 2px 20px grey
 }
 
+.display a {
+  text-decoration: none;
+  color: #333;
+}
 /* Page content */
 /* .content {
   padding: 16px;

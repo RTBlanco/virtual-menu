@@ -12,7 +12,6 @@ const Categories = ({categories}) => {
 
   return (
     <>
-      <p>list of categories</p>
       <div className="display">
         {categories.map(cat => (
           <Link key={cat.id} to={`/${cat.name}`}>
