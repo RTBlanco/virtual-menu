@@ -27,7 +27,6 @@ const AdminNav = () => {
       return (
         <>
           <h3>{admin.loading ? "loading" : `Welcome ${admin.name}`}</h3>
-          {/* <PlusIcon className="plus-icon" /> */}
           <button className="logout-btn" onClick={() => dispatch(LogOut())}><LogOutIcon/></button>
         </>
       )
