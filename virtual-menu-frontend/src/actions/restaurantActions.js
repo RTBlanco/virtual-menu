@@ -17,7 +17,6 @@ export function fetchResturant() {
     fetch(`${BASE_URL}/resturants/1`)
       .then(response => response.json())
       .then(restaurant => {
-        console.log(restaurant)
         dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories, about: restaurant.about})
       })
       .catch(er => console.log('error',er))

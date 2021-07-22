@@ -27,7 +27,7 @@ function App() {
     dispatch(fetchResturant())
   },[])
 
-  console.log(restaurant)
+ 
   return (
     <Router>
       <div className="App">

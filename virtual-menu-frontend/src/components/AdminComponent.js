@@ -10,7 +10,7 @@ import EditAreaComponent from "./EditAreaComponent";
 const AdminComponent = () => {
 
   const dispatch = useDispatch();
-  // New Category Modal State 
+ 
   const [modalIsOpen, setIsOpen] = useState(false)
 
   const openModal = () => {
@@ -42,7 +42,6 @@ const AdminComponent = () => {
   if (restaurant.loading) {
     return <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loader"></img>
   }
-  console.log(restaurant)
   return (
     <>
       <EditAreaComponent restaurant={restaurant} />
