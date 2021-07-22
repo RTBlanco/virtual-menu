@@ -18,11 +18,6 @@ const EditAdminModal = ({admin, closeModal, modalIsOpen}) => {
     console.log("submit",state)
   }
 
-  const handleClick = (e) => {
-    e.preventDefault()
-    closeModal()
-    console.log('delete')
-  }
 
   return (
     <Modal
@@ -42,7 +37,6 @@ const EditAdminModal = ({admin, closeModal, modalIsOpen}) => {
             <label htmlFor="password">password: </label>
             <input onChange={handleOnChange} type="text" name="password" id="password" />
             <button className="create-btn" type="submit" >Edit!</button>
-            <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>
         </div>
     </Modal>

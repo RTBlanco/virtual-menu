@@ -18,11 +18,6 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
     console.log("submit",state)
   }
 
-  const handleClick = (e) => {
-    e.preventDefault()
-    closeModal()
-    console.log('delete')
-  }
 
   return (
     <Modal
@@ -38,7 +33,6 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
             <label htmlFor="category-name">Name of Restaurant: </label>
             <input onChange={handleOnChange} type="text" name="category" id="category-name" defaultValue={state} />
             <button className="create-btn" type="submit" >Edit!</button>
-            <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>
         </div>
     </Modal>
