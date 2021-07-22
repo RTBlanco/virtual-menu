@@ -89,3 +89,24 @@ export function addCategory(category) {
     .catch(error => console.log("error",error))
   } 
 }
+
+export function removeCategory(category) {
+  console.log('removing', category)
+  return (dispatch) => {
+    dispatch({type: "LOADING_RESTAURANT"})
+    fetch(`${BASE_URL}/resturants/1/categories/${category.id}`, {
+      method: 'DELETE',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      }
+    })
+    .then(response => response.json())
+    .then(req => {
+      console.log('removing', req)
+      dispatch({type: "REMOVE_CATEGORY", id: req.id})
+    })
+    .catch(error => console.log("error",error))
+  } 
+}

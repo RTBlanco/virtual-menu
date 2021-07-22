@@ -38,8 +38,9 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   def destroy
     @category.destroy
-  end
-
+    render json: @category.serialize_one
+  end 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category

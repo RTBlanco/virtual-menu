@@ -1,9 +1,12 @@
 import { useState } from "react"
 import Modal from 'react-modal'
+import { useDispatch } from "react-redux"
+import { removeCategory } from "../actions/restaurantActions"
 
 const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
+  const dispatch = useDispatch();
   const [state, setState] = useState(category.name)
-
+  // console.log(category)
   const handleOnChange = (e) => {
     setState(e.target.value)
   } 
@@ -16,6 +19,7 @@ const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
 
   const handleClick = (e) => {
     e.preventDefault()
+    dispatch(removeCategory(category))
     closeModal()
     console.log('delete')
   }
