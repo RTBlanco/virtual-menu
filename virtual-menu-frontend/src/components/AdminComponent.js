@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchAdmin } from "../actions/restaurantActions";
 import CategoryComponent from './CategoryComponent'
 import NewCategoryModal from "./NewCategoryModal";
+import EditAreaComponent from "./EditAreaComponent";
+
 
 
 const AdminComponent = () => {
 
   const dispatch = useDispatch();
+  // New Category Modal State 
   const [modalIsOpen, setIsOpen] = useState(false)
 
   const openModal = () => {
@@ -18,12 +21,12 @@ const AdminComponent = () => {
     setIsOpen(false);
   }
 
-
   const restaurant = useSelector( state => {
     return {
       name: state.restaurant.name,
       categories: state.restaurant.categories,
-      loading: state.restaurant.loading
+      loading: state.restaurant.loading,
+      admin: state.admin
     }
   })
 
@@ -36,14 +39,23 @@ const AdminComponent = () => {
   }
 
   console.log(restaurant)
+
+  if (restaurant.loading) {
+    return <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loader"></img>
+  }
+  
   return (
-    <div id="admin-panel">
-      <NewCategoryModal closeModal={closeModal} modalIsOpen={modalIsOpen}/>
-      <button onClick={openModal} className="new-cat-btn">New Category</button>
-      <div className="admin-control">
-        {restaurant.loading ? 'loading....': renderCategories()}
+    <>
+      <EditAreaComponent restaurant={restaurant} />
+      
+      <div id="admin-panel">
+        <NewCategoryModal closeModal={closeModal} modalIsOpen={modalIsOpen}/>
+        <button onClick={openModal} className="new-cat-btn">New Category</button>
+        <div className="admin-control">
+          {restaurant.loading ? 'loading....': renderCategories()}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

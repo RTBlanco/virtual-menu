@@ -246,3 +246,23 @@
   border: none;
   background-color: #333;
 }
+
+.edit-area-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.edit-area-btn {
+  background-color: rgb(45, 185, 45);
+  border: 1px solid;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #333;
+  margin: 10px 21px 0;
+  height: 25px;
+}
+
+.edit-area-btn:active {
+  transform: scale(0.95 ,0.95);
+}
