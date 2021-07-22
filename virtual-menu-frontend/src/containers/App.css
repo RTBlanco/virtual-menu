@@ -323,3 +323,11 @@
   justify-content: center;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  margin: -2%;
+}
+.header h1 {
+  font-size: 9vh;
+}

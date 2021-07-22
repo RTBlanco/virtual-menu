@@ -2,7 +2,7 @@
 const FoodCard = ({food}) => {
   return (
     <div className="card">
-      <h4>{food.name}</h4>
+      <h1>{food.name}</h1>
     </div>
   )
 }

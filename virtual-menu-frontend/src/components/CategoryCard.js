@@ -2,7 +2,7 @@
 const CategoryCard = ({category}) => {
   return (
     <div className="card">
-      <h4>{category.name}</h4>
+      <h1>{category.name}</h1>
     </div>
   )
 }
