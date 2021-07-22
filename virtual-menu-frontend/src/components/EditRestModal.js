@@ -35,7 +35,7 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
             <label htmlFor="category-name">Name of Restaurant: </label>
             <input onChange={handleOnChange} type="text" name="name" id="category-name" defaultValue={state.name} />
             <label htmlFor="about">about:</label>
-            <textarea type="text" onChange={handleOnChange} name="about" id="about" defaultValue={state.about}/>
+            <textarea type="text" onChange={handleOnChange} name="about" id="about" defaultValue={state.about}  rows="8" cols="50"/>
             <button className="create-btn" type="submit" >Edit!</button>
           </form>
         </div>

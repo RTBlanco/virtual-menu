@@ -61,8 +61,15 @@
 }
 
 #about {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+#about p {
+  width: 28%;
   text-align: center;
-  margin: 0 5% 0 5%;
 }
 
 .food-display {
