@@ -2,7 +2,6 @@ import { useState } from "react";
 import Modal from 'react-modal';
 
 
-
 const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
 
   const [state, setState] = useState(restaurant.name)
@@ -32,6 +31,10 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Restaurant: </label>
             <input onChange={handleOnChange} type="text" name="category" id="category-name" defaultValue={state} />
+            <div className="rest-image-input">
+              <label htmlFor="image">Image</label>
+              <input type="file" name='image' id='image' accept="image/*" />
+            </div>
             <button className="create-btn" type="submit" >Edit!</button>
           </form>
         </div>

@@ -23,14 +23,21 @@ const Login = ({login}) => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username:</label>
-      <input type="text" name="username" id="username" onChange={handleOnchange} />
+    <div className="login-area">
+      <div className="login-card">
+        <div className="login-header">
+          Login
+        </div>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <label htmlFor="username">Username:</label>
+          <input type="text" name="username" id="username" onChange={handleOnchange} />
 
-      <label htmlFor="password">Password:</label>
-      <input type="text" name="password" id="password" onChange={handleOnchange} />
-      <input type="submit"/>
-    </form>
+          <label htmlFor="password">Password:</label>
+          <input type="text" name="password" id="password" onChange={handleOnchange} />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
   )
 }
 
