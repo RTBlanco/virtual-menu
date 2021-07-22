@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Modal from 'react-modal';
+import { useDispatch } from "react-redux";
+import { editRestaurant } from "../actions/restaurantActions";
 
 
 const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
 
+  const dispatch = useDispatch();
   const [state, setState] = useState(restaurant.name)
 
   const handleOnChange = (e) => {
@@ -12,9 +15,9 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(editRestaurant(state))
     closeModal()
   }
-
 
   return (
     <Modal

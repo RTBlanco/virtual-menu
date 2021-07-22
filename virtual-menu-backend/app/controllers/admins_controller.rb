@@ -49,7 +49,7 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   def destroy
     @admin.destroy
-    render json:@admin.serialize
+    render json: @admin.serialize
   end
 
   private

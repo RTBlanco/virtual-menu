@@ -18,8 +18,6 @@ export function fetchResturant() {
       .then(response => response.json())
       .then(restaurant => {
         dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories})
-        // dispatch({type: "ADDING_CATEGORIES", categories: restaurant.categories})
-        // dispatch({type: "ADDING_FOODS", foods: restaurant.categories.foods})
       })
       .catch(er => console.log('error',er))
   }
@@ -38,7 +36,7 @@ export function fetchLogin(admin) {
     })
     .then(response => response.json())
     .then(req => {
-      
+      console.log(req)
       dispatch({type: "LOGGED_IN", id: req.admin.id, name: req.admin.name, username: req.admin.username, token: req.jwt})
     })
     .catch(error => console.log("error",error))
@@ -146,3 +144,87 @@ export function addFood(food) {
     })
   }
 } 
+
+export function editFood(food) {
+  food = {
+    ...food, 
+    category_id: food.category
+  }
+  return (dispatch) => {
+    dispatch({type: "LOADING_RESTAURANT"})
+    fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods/${food.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      }, body: JSON.stringify(food)
+    })
+    .then(response => response.json())
+    .then(req => {
+      dispatch({type: "EDIT_FOOD", payload: req })
+    })
+    .catch(error => console.log("error",error))
+  }
+}
+
+export function removeFood(food) {
+  food = {
+    ...food, 
+    category_id: food.category
+  }
+  return (dispatch) => {
+    dispatch({type: "LOADING_RESTAURANT"})
+    fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods/${food.id}`, {
+      method: 'DELETE',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      }
+    })
+    .then(response => response.json())
+    .then(req => {
+      dispatch({type: "REMOVE_FOOD", payload: req })
+    })
+    .catch(error => console.log("error",error))
+  }
+}
+
+export function editRestaurant(name) {
+  console.log({name})
+  return (dispatch) => {
+    dispatch({type: "LOADING_RESTAURANT"})
+    fetch(`${BASE_URL}/resturants/1`,{
+      method: 'PATCH',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      }, body: JSON.stringify({name})
+    })
+      .then(response => response.json())
+      .then(restaurant => {
+        dispatch({type: "EDIT_RESTAURANT", name: restaurant.name})
+      })
+      .catch(er => console.log('error',er))
+  }
+}
+
+export function editAdmin(admin) {
+  return (dispatch) => {
+    dispatch({type: 'GETTING_ADMIN'})
+    fetch(`${BASE_URL}/resturants/1/admins/${admin_id}`,{
+      method: 'PATCH',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      }, body: JSON.stringify(admin)
+    })
+    .then(response => response.json())
+    .then(req => {
+      dispatch({type: "EDIT_ADMIN", id: req.id, name: req.name, username: req.username})
+    })
+  }
+}

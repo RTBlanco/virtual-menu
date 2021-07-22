@@ -1,23 +1,30 @@
 import { useState } from "react";
 import Modal from 'react-modal';
+import { editFood, removeFood} from "../actions/restaurantActions";
+import { useDispatch } from "react-redux";
 
 const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
+  const dispatch = useDispatch();
+
   const [state, setState] = useState(food)
 
   const handleOnChange = (e) => {
-    setState(e.target.value)
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
+    })
   } 
-  
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    dispatch(editFood(state))
     closeModal()
-    console.log(state)
   }
 
   const handleClick = (e) => {
     e.preventDefault()
+    dispatch(removeFood(state))
     closeModal()
-    console.log('delete')
   }
 
   const showCurrency = () => {
@@ -40,12 +47,12 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
           <div className="new-cat-header">Edit Category</div>
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Food: </label>
-            <input onChange={handleOnChange} type="text" name="category" id="category-name" defaultValue={state.name}/>
+            <input onChange={handleOnChange} type="text" name="name" id="category-name" defaultValue={state.name}/>
             <div className="food-cost-cal">
               <label htmlFor="cost">Cost:</label>
-              <input type="text" name='cost' id='cost' defaultValue={showCurrency()}/>
+              <input onChange={handleOnChange} type="text" name='cost' id='cost' defaultValue={showCurrency()}/>
               <label htmlFor="calories">Cals:</label>
-              <input type="text" name='calories' id='calories' defaultValue={state.cals}/>
+              <input onChange={handleOnChange} type="text" name='calories' id='calories' defaultValue={state.calories}/>
               <div className="rest-image-input">
                 <label htmlFor="image">Image</label>
                 <input type="file" name='image' id='image' accept="image/*" />

@@ -32,7 +32,7 @@ class FoodsController < ApplicationController
   # PATCH/PUT /foods/1
   def update
     if @food.update(food_params)
-      render json: @food
+      render json: @food.serialize
     else
       render json: @food.errors, status: :unprocessable_entity
     end
@@ -41,6 +41,7 @@ class FoodsController < ApplicationController
   # DELETE /foods/1
   def destroy
     @food.destroy
+    render json: @food.serialize
   end
 
   private

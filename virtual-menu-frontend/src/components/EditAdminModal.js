@@ -1,21 +1,29 @@
 import { useState } from "react";
 import Modal from 'react-modal';
+import { useDispatch } from "react-redux";
+import { editAdmin } from "../actions/restaurantActions";
 
 const EditAdminModal = ({admin, closeModal, modalIsOpen}) => {
   
+  const dispatch = useDispatch();
 
-  const [state, setState] = useState(admin)
+  const [state, setState] = useState({
+    id: admin.id,
+    name: admin.name,
+    username: admin.username
+  })
 
   const handleOnChange = (e) => {
     setState({
+      ...state,
       [e.target.name]: e.target.value
     })
   } 
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(editAdmin(state))
     closeModal()
-    console.log("submit",state)
   }
 
 

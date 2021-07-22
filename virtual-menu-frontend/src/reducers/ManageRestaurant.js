@@ -9,6 +9,8 @@ export default rootReducer;
 
 function restaurantReducer(state = {name: "", categories: [], foods: [], loading: false}, action) {
   let index
+  let category
+  let indexOfCategory
   switch(action.type) {
     case 'LOADING_RESTAURANT':
       return {
@@ -21,6 +23,13 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
         name: action.name,
         categories: action.categories,
         foods: action.foods,
+        loading: false
+      }
+
+    case 'EDIT_RESTAURANT':
+      return {
+        ...state,
+        name: action.name,
         loading: false
       }
 
@@ -49,7 +58,7 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
 
     case "ADD_FOOD":
       index = state.categories.findIndex(cat => cat.id === action.payload.category)
-      let category = state.categories[index]
+      category = state.categories[index]
 
       return {
         ...state,
@@ -57,6 +66,36 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
           ...state.categories.slice(0, index),
           {...category, foods:[...category.foods, action.payload] },
           ...state.categories.slice(index + 1)
+        ],
+        loading: false
+      }
+
+    case "EDIT_FOOD":
+      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category)
+      category = state.categories[indexOfCategory]
+
+      let indexOfFood = category.foods.findIndex(food => food.id === action.payload.id)
+
+      return {
+        ...state,
+        categories: [
+          ...state.categories.slice(0, indexOfCategory),
+          {...category, foods:[...category.foods.slice(0, indexOfFood), action.payload, ...category.foods.slice(indexOfFood + 1)] },
+          ...state.categories.slice(indexOfCategory + 1)
+        ],
+        loading: false
+      }
+
+    case "REMOVE_FOOD":
+      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category)
+      category = state.categories[indexOfCategory]
+
+      return {
+        ...state,
+        categories:[
+          ...state.categories.slice(0, indexOfCategory),
+          {...category, foods:[...category.foods.filter(food => food.id !== action.payload.id)] },
+          ...state.categories.slice(indexOfCategory + 1)
         ],
         loading: false
       }
@@ -92,7 +131,7 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
       }
 
     case "ADD_ADMIN":
-      return{
+      return {
         ...state,
         id: action.id,
         name: action.name,
@@ -103,6 +142,17 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
     case "LOGOUT":
       window.sessionStorage.clear()
       return {id:"",  name: "", username: "", token:"", loading: false}
+
+
+    case "EDIT_ADMIN":
+      return {
+        ...state,
+        id: action.id,
+        name: action.name,
+        username: action.username,
+        loading: false
+      }
+
 
     default:
       return state
