@@ -26,9 +26,17 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
     case "ADDING_CATEGORY":
       return {
         ...state, 
-        categories: [ ... state.categories, action.category]
+        categories: [ ...state.categories, action.category],
+        loading: false
       }
-      
+
+    case "REMOVE_CATEGORY":
+      return {
+        ...state, 
+        categories: [...state.categories.filter(cat => cat.id !== action.id )],
+        loading: false
+      } 
+
     default:
       return state
   }

@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import {useDispatch} from 'react-redux'
 import Modal from 'react-modal';
+import { addCategory } from '../actions/restaurantActions';
 
 const NewCategoryModal = ({modalIsOpen, closeModal}) => {
+
+  const dispatch = useDispatch();
 
   const [state, setState] = useState('')
 
@@ -12,6 +16,8 @@ const NewCategoryModal = ({modalIsOpen, closeModal}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(state)
+    closeModal()
+    dispatch(addCategory(state))
   }
 
   return (
@@ -27,7 +33,7 @@ const NewCategoryModal = ({modalIsOpen, closeModal}) => {
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Category: </label>
             <input onChange={handleOnChange} type="text" name="category" id="category-name" />
-            <button onClick={closeModal} className="create-btn" type="Submit" >Create!</button>
+            <button className="create-btn" type="Submit" >Create!</button>
           </form>
         </div>
     </Modal>

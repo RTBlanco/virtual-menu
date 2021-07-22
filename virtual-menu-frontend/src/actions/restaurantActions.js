@@ -62,3 +62,30 @@ export function fetchAdmin(){
     })
   }
 }
+
+export function addCategory(category) {
+  let newCategory = {
+    name: category,
+    resturant_id: "1"
+  }
+  console.log('addingCat', newCategory)
+  jwt = window.sessionStorage.getItem('token')
+
+  return (dispatch) => {
+    dispatch({type: "LOADING_RESTAURANT"})
+    fetch(`${BASE_URL}/resturants/1/categories`, {
+      method: 'POST',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      },body: JSON.stringify(newCategory)
+    })
+    .then(response => response.json())
+    .then(req => {
+      console.log('adding category', req)
+      dispatch({type: "ADDING_CATEGORY", category: req})
+    })
+    .catch(error => console.log("error",error))
+  } 
+}
