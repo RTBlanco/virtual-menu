@@ -334,7 +334,8 @@
 .header {
   display: flex;
   justify-content: center;
-  margin: -2%;
+  margin: -2% 0;
+  width: 100%;
 }
 .header h1 {
   font-size: 9vh;
