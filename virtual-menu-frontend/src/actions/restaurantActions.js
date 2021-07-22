@@ -17,6 +17,7 @@ export function fetchResturant() {
     fetch(`${BASE_URL}/resturants/1`)
       .then(response => response.json())
       .then(restaurant => {
+        console.log(restaurant)
         dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories})
       })
       .catch(er => console.log('error',er))
@@ -191,8 +192,7 @@ export function removeFood(food) {
   }
 }
 
-export function editRestaurant(name) {
-  console.log({name})
+export function editRestaurant(res) {
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
     fetch(`${BASE_URL}/resturants/1`,{
@@ -201,7 +201,7 @@ export function editRestaurant(name) {
         "Authorization": `Bearer ${jwt}`,
         "Content-Type": "application/json",
         "Accept" : "application/json",
-      }, body: JSON.stringify({name})
+      }, body: JSON.stringify({name: res})
     })
       .then(response => response.json())
       .then(restaurant => {

@@ -14,7 +14,7 @@ class FoodsController < ApplicationController
 
   # GET /foods/1
   def show
-    render json: @food
+    render json: @food.serialize
   end
 
   # POST /foods
@@ -56,6 +56,6 @@ class FoodsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def food_params
       # params.fetch(:food, {})
-      params.permit(:name, :cost, :calories, :category_id)
+      params.permit(:name, :cost,  :calories, :category_id)
     end
 end

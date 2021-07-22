@@ -16,6 +16,7 @@ function App() {
 
   const restaurant = useSelector( (state) => {
     return {
+      image: state.restaurant.image,
       name: state.restaurant.name,
       loading: state.restaurant.loading,
       categories: state.restaurant.categories
@@ -26,7 +27,7 @@ function App() {
     dispatch(fetchResturant())
   },[])
 
-
+  console.log(restaurant)
   return (
     <Router>
       <div className="App">

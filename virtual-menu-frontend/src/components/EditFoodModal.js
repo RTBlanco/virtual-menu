@@ -53,10 +53,6 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
               <input onChange={handleOnChange} type="text" name='cost' id='cost' defaultValue={showCurrency()}/>
               <label htmlFor="calories">Cals:</label>
               <input onChange={handleOnChange} type="text" name='calories' id='calories' defaultValue={state.calories}/>
-              <div className="rest-image-input">
-                <label htmlFor="image">Image</label>
-                <input type="file" name='image' id='image' accept="image/*" />
-              </div>
             </div>
             <button className="create-btn" type="Submit" >Edit!</button>
             <button className="red-btn" onClick={handleClick}>Delete</button>

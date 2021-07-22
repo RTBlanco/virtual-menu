@@ -7,7 +7,6 @@ const HeaderComponent = ({resturant}) => {
 
   return (
     <div className="header">
-      <p>background image here</p>
       <h1 >{resturant.name}</h1>
     </div>
   )

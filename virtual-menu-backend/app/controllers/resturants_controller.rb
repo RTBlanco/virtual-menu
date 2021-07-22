@@ -27,8 +27,9 @@ class ResturantsController < ApplicationController
 
   # PATCH/PUT /resturants/1
   def update
+    # binding.pry
     if @resturant.update(resturant_params)
-      render json: @resturant
+      render json: @resturant.serialize
     else
       render json: @resturant.errors, status: :unprocessable_entity
     end
@@ -47,6 +48,7 @@ class ResturantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def resturant_params
-      params.fetch(:resturant, {}).permit(:name)
+      # params.fetch(:resturant, {}).permit(:name, :image)
+      params.permit(:name)
     end
 end
