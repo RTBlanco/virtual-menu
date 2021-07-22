@@ -57,7 +57,6 @@ export function fetchAdmin(){
     })
     .then(response => response.json())
     .then(req => {
-      console.log(req)
       dispatch({type: "ADD_ADMIN", id: req.id, name: req.name, username: req.username})
     })
   }
@@ -110,3 +109,24 @@ export function removeCategory(category) {
     .catch(error => console.log("error",error))
   } 
 }
+
+export function editCategory(category) {
+  console.log('editing', category)
+  return (dispatch) => {
+    dispatch({type: "LOADING_RESTAURANT"})
+    fetch(`${BASE_URL}/resturants/1/categories/${category.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      }
+    })
+    .then(response => response.json())
+    .then(req => {
+      console.log('edit', req)
+      dispatch({type: "EDIT_CATEGORY", payload: req })
+    })
+    .catch(error => console.log("error",error))
+  }
+} 

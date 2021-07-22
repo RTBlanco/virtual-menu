@@ -6,7 +6,6 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
 
   const [state, setState] = useState(restaurant.name)
 
-  console.log(restaurant)
   const handleOnChange = (e) => {
     setState(e.target.value)
   } 
@@ -14,7 +13,6 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     closeModal()
-    console.log("submit",state)
   }
 
 

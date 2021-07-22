@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Modal from 'react-modal'
 import { useDispatch } from "react-redux"
-import { removeCategory } from "../actions/restaurantActions"
+import { removeCategory, editCategory } from "../actions/restaurantActions"
 
 const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     closeModal()
+    dispatch(editCategory(category))
     console.log(state)
   }
 

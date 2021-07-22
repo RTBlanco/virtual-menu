@@ -25,7 +25,6 @@ const EditAreaComponent = ({restaurant}) => {
     })
   }
 
-  console.log(restaurant)
   return (
     <>
       <EditAdminModal admin={restaurant.admin} closeModal={() => close('admin')} modalIsOpen={modal.admin}/>

@@ -38,8 +38,6 @@ const AdminComponent = () => {
     return restaurant.categories.map(cat => <CategoryComponent key={cat.id} category={cat}/>)
   }
 
-  console.log(restaurant)
-
   if (restaurant.loading) {
     return <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loader"></img>
   }
