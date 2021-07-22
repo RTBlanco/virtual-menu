@@ -19,6 +19,7 @@ class FoodsController < ApplicationController
 
   # POST /foods
   def create
+    # binding.pry
     @food = Food.new(food_params)
 
     if @food.save
@@ -49,11 +50,11 @@ class FoodsController < ApplicationController
     end
 
     def set_category
-      @category = Category.find(food_params[:category])
+      @category = Category.find(food_params[:category_id])
     end
     # Only allow a list of trusted parameters through.
     def food_params
       # params.fetch(:food, {})
-      params.permit(:name, :cost, :calories, :category)
+      params.permit(:name, :cost, :calories, :category_id)
     end
 end

@@ -127,9 +127,11 @@ export function editCategory(category, state) {
 
 
 export function addFood(food) {
+  food.cost = parseFloat(food.cost).toFixed(2)
+  
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
-    fetch(`${BASE_URL}/resturants/1/categories/${food.category}/foods`, {
+    fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods`, {
       method: 'POST',
       headers: {
         "Authorization": `Bearer ${jwt}`,

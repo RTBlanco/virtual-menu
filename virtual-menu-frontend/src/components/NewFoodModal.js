@@ -10,7 +10,7 @@ const NewFoodModal = ({ category, modalIsOpen, closeModal}) => {
     name: '',
     cost: '',
     calories: '',
-    category
+    category_id: category
   })
 
   const handleOnChange = (e) => {
@@ -23,7 +23,7 @@ const NewFoodModal = ({ category, modalIsOpen, closeModal}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(state)
-    // dispatch(addFood(state))
+    dispatch(addFood(state))
     closeModal()
   }
 
@@ -46,6 +46,10 @@ const NewFoodModal = ({ category, modalIsOpen, closeModal}) => {
               <input onChange={handleOnChange} type="text" name='cost' id='cost' />
               <label htmlFor="cals">Cals:</label>
               <input onChange={handleOnChange} type="text" name='calories' id='cals' /> 
+              <div className="rest-image-input">
+                <label htmlFor="image">Image</label>
+                <input type="file" name='image' id='image' accept="image/*" />
+              </div>
             </div>
             <button className="create-btn" type="Submit" >Create!</button>
           </form>
