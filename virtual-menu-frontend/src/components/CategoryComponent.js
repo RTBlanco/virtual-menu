@@ -33,7 +33,7 @@ const CategoryComponent = ({category}) => {
   return (
     <div className="admin-category">
       <EditCategoryModal category={category} closeModal={closeModal} modalIsOpen={modalIsOpen}/>
-      <NewFoodModal closeModal={closeNewFood} modalIsOpen={NewFoodIsOpen} />
+      <NewFoodModal category={category.id} closeModal={closeNewFood} modalIsOpen={NewFoodIsOpen} />
       <div className="category-header">
         {category.name}
         <button onClick={openNewFood} className="add-food-btn"><AddBtnFood /></button>

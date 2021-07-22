@@ -49,11 +49,11 @@ class FoodsController < ApplicationController
     end
 
     def set_category
-      @category = Category.find(food_params[:category_id])
+      @category = Category.find(food_params[:category])
     end
     # Only allow a list of trusted parameters through.
     def food_params
       # params.fetch(:food, {})
-      params.permit(:name, :cost, :calories, :category_id)
+      params.permit(:name, :cost, :calories, :category)
     end
 end

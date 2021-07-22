@@ -124,3 +124,23 @@ export function editCategory(category, state) {
     .catch(error => console.log("error",error))
   }
 } 
+
+
+export function addFood(food) {
+  return (dispatch) => {
+    dispatch({type: "LOADING_RESTAURANT"})
+    fetch(`${BASE_URL}/resturants/1/categories/${food.category}/foods`, {
+      method: 'POST',
+      headers: {
+        "Authorization": `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      },body: JSON.stringify(food)
+    })
+    .then(response => response.json())
+    .then(req => {
+      console.log(req)
+      dispatch({type: "ADD_FOOD", payload: req})
+    })
+  }
+} 

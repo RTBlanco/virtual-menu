@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
 export default rootReducer;
 
 function restaurantReducer(state = {name: "", categories: [], foods: [], loading: false}, action) {
+  let index
   switch(action.type) {
     case 'LOADING_RESTAURANT':
       return {
@@ -38,12 +39,25 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
       } 
 
     case "EDIT_CATEGORY":
-      let index = state.categories.findIndex(cat => cat.id == action.payload.id)
+      index = state.categories.findIndex(cat => cat.id === action.payload.id)
 
       return {
         ...state,
         categories: [...state.categories.slice(0, index), action.payload, ...state.categories.slice(index + 1)],
-        // categories: [...categories],
+        loading: false
+      }
+
+    case "ADD_FOOD":
+      index = state.categories.findIndex(cat => cat.id === action.payload.category)
+      let category = state.categories[index]
+
+      return {
+        ...state,
+        categories: [
+          ...state.categories.slice(0, index),
+          {...category, foods:[...category.foods, action.payload] },
+          ...state.categories.slice(index + 1)
+        ],
         loading: false
       }
 

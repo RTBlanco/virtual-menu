@@ -2,11 +2,7 @@ import { useState } from "react";
 import Modal from 'react-modal';
 
 const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
-  const [state, setState] = useState({
-    name: food.name,
-    cost: food.cost,
-    cals: food.calories
-  })
+  const [state, setState] = useState(food)
 
   const handleOnChange = (e) => {
     setState(e.target.value)

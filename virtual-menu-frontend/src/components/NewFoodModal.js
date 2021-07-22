@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Modal from 'react-modal';
+import { addFood } from "../actions/restaurantActions";
+import { useDispatch } from "react-redux";
 
-const NewFoodModal = ({ modalIsOpen, closeModal}) => {
+const NewFoodModal = ({ category, modalIsOpen, closeModal}) => {
 
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     name: '',
     cost: '',
-    cals: ''
+    calories: '',
+    category
   })
 
   const handleOnChange = (e) => {
@@ -19,6 +23,8 @@ const NewFoodModal = ({ modalIsOpen, closeModal}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(state)
+    // dispatch(addFood(state))
+    closeModal()
   }
 
 
@@ -34,14 +40,14 @@ const NewFoodModal = ({ modalIsOpen, closeModal}) => {
           <div className="new-cat-header">New Food</div>
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Food: </label>
-            <input onChange={handleOnChange} type="text" name="category" id="category-name" />
+            <input onChange={handleOnChange} type="text" name="name" id="category-name" />
             <div className="food-cost-cal">
               <label htmlFor="cost">Cost:</label>
-              <input type="text" name='cost' id='cost' />
+              <input onChange={handleOnChange} type="text" name='cost' id='cost' />
               <label htmlFor="cals">Cals:</label>
-              <input type="text" name='cals' id='cals' /> 
+              <input onChange={handleOnChange} type="text" name='calories' id='cals' /> 
             </div>
-            <button onClick={closeModal} className="create-btn" type="Submit" >Create!</button>
+            <button className="create-btn" type="Submit" >Create!</button>
           </form>
         </div>
     </Modal>
