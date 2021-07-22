@@ -16,7 +16,7 @@ function App() {
 
   const restaurant = useSelector( (state) => {
     return {
-      image: state.restaurant.image,
+      about: state.restaurant.about,
       name: state.restaurant.name,
       loading: state.restaurant.loading,
       categories: state.restaurant.categories
@@ -34,7 +34,7 @@ function App() {
         <HeaderComponent resturant={restaurant}/>
         <NavBar categories={restaurant.categories}/>
         <Switch>
-          <Route exact path='/' component={() => <Home categories={restaurant.categories}/>}/>
+          <Route exact path='/' component={() => <Home restaurant={restaurant}/>}/>
           <Route exact path='/admin' component={Admin} />
           <Route path='/:category_name/:name' render={match => <FoodComponent {...match} categories={restaurant.categories} /> }/>
           <Route path='/:name' component={match => <Foods {...match} categories={restaurant.categories}/>} />

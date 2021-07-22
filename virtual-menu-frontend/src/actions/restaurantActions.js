@@ -18,7 +18,7 @@ export function fetchResturant() {
       .then(response => response.json())
       .then(restaurant => {
         console.log(restaurant)
-        dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories})
+        dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories, about: restaurant.about})
       })
       .catch(er => console.log('error',er))
   }
@@ -201,11 +201,11 @@ export function editRestaurant(res) {
         "Authorization": `Bearer ${jwt}`,
         "Content-Type": "application/json",
         "Accept" : "application/json",
-      }, body: JSON.stringify({name: res})
+      }, body: JSON.stringify(res)
     })
       .then(response => response.json())
       .then(restaurant => {
-        dispatch({type: "EDIT_RESTAURANT", name: restaurant.name})
+        dispatch({type: "EDIT_RESTAURANT", name: restaurant.name, about: restaurant.about})
       })
       .catch(er => console.log('error',er))
   }

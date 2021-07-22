@@ -48,6 +48,8 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Food: </label>
             <input onChange={handleOnChange} type="text" name="name" id="category-name" defaultValue={state.name}/>
+            <label htmlFor="description">Description:</label>
+            <textarea type="text" onChange={handleOnChange} name="description" id="food-description" defaultValue={state.description}/>
             <div className="food-cost-cal">
               <label htmlFor="cost">Cost:</label>
               <input onChange={handleOnChange} type="text" name='cost' id='cost' defaultValue={showCurrency()}/>

@@ -23,6 +23,7 @@ const AdminComponent = () => {
 
   const restaurant = useSelector( state => {
     return {
+      about: state.restaurant.about,
       name: state.restaurant.name,
       categories: state.restaurant.categories,
       loading: state.restaurant.loading,

@@ -2,11 +2,11 @@ import About from "../components/About";
 import Categories from "./Categories";
 
 
-const Home = ({categories}) => {
+const Home = ({restaurant}) => {
   return (
     <>
-      <About />
-      <Categories categories={categories}/>
+      <About about={restaurant.about}/>
+      <Categories categories={restaurant.categories}/>
     </>
   )
 }

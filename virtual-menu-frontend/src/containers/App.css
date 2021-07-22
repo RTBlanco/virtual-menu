@@ -79,6 +79,7 @@
   display: flex;
   justify-content: space-around;
   width: 50%;
+  flex-direction: column;
 }
 
 #admin-panel {
@@ -330,4 +331,12 @@
 }
 .header h1 {
   font-size: 9vh;
+}
+
+
+.food-details-show {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  margin-bottom: 10%;
 }
