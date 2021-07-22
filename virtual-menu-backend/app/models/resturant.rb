@@ -13,7 +13,8 @@ class Resturant < ApplicationRecord
   def serialize
     {
       name: self.name,
-      categories: self.categories.map{|cat| cat.serialize_one}
+      categories: self.categories.map{|cat| cat.serialize_one},
+      about: self.about
     }
   end
 
