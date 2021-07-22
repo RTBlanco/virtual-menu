@@ -38,11 +38,12 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
       } 
 
     case "EDIT_CATEGORY":
-      let index = state.categories.findIndex(cat => cat.id = action.payload.id)
-      let category = state.categories[index]
+      let index = state.categories.findIndex(cat => cat.id == action.payload.id)
+
       return {
         ...state,
         categories: [...state.categories.slice(0, index), action.payload, ...state.categories.slice(index + 1)],
+        // categories: [...categories],
         loading: false
       }
 

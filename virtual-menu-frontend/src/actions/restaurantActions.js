@@ -26,7 +26,7 @@ export function fetchResturant() {
 }
 
 export function fetchLogin(admin) {
-  console.log(admin)
+  
   return (dispatch) => {
     dispatch({type: "LOGGING_IN"})
     fetch(`${BASE_URL}/resturants/1/login`,{
@@ -38,7 +38,7 @@ export function fetchLogin(admin) {
     })
     .then(response => response.json())
     .then(req => {
-      console.log(req)
+      
       dispatch({type: "LOGGED_IN", id: req.admin.id, name: req.admin.name, username: req.admin.username, token: req.jwt})
     })
     .catch(error => console.log("error",error))
@@ -67,7 +67,6 @@ export function addCategory(category) {
     name: category,
     resturant_id: "1"
   }
-  console.log('addingCat', newCategory)
   jwt = window.sessionStorage.getItem('token')
 
   return (dispatch) => {
@@ -82,7 +81,6 @@ export function addCategory(category) {
     })
     .then(response => response.json())
     .then(req => {
-      console.log('adding category', req)
       dispatch({type: "ADDING_CATEGORY", category: req})
     })
     .catch(error => console.log("error",error))
@@ -90,7 +88,6 @@ export function addCategory(category) {
 }
 
 export function removeCategory(category) {
-  console.log('removing', category)
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
     fetch(`${BASE_URL}/resturants/1/categories/${category.id}`, {
@@ -103,15 +100,13 @@ export function removeCategory(category) {
     })
     .then(response => response.json())
     .then(req => {
-      console.log('removing', req)
       dispatch({type: "REMOVE_CATEGORY", id: req.id})
     })
     .catch(error => console.log("error",error))
   } 
 }
 
-export function editCategory(category) {
-  console.log('editing', category)
+export function editCategory(category, state) {
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
     fetch(`${BASE_URL}/resturants/1/categories/${category.id}`, {
@@ -120,11 +115,10 @@ export function editCategory(category) {
         "Authorization": `Bearer ${jwt}`,
         "Content-Type": "application/json",
         "Accept" : "application/json",
-      }
+      }, body: JSON.stringify(state)
     })
     .then(response => response.json())
     .then(req => {
-      console.log('edit', req)
       dispatch({type: "EDIT_CATEGORY", payload: req })
     })
     .catch(error => console.log("error",error))

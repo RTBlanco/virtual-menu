@@ -5,16 +5,16 @@ import { removeCategory, editCategory } from "../actions/restaurantActions"
 
 const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
   const dispatch = useDispatch();
-  const [state, setState] = useState(category.name)
+  const [state, setState] = useState({name: category.name})
   // console.log(category)
   const handleOnChange = (e) => {
-    setState(e.target.value)
+    setState({name: e.target.value})
   } 
   
   const handleSubmit = (e) => {
     e.preventDefault()
     closeModal()
-    dispatch(editCategory(category))
+    dispatch(editCategory(category, state))
     console.log(state)
   }
 
@@ -37,7 +37,7 @@ const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
           <div className="new-cat-header">Edit Category</div>
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Category: </label>
-            <input onChange={handleOnChange} type="text" name="category" id="category-name" value={state}/>
+            <input onChange={handleOnChange} type="text" name="category" id="category-name" value={state.name}/>
             <button className="create-btn" type="Submit" >Edit!</button>
             <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>
