@@ -26,12 +26,8 @@ const Login = ({login}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    console.log(state)
     login(state)
   }
-
-  console.log(state.checked)
 
   return (
     <div className="login-area">
