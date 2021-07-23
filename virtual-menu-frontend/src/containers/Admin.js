@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Login from "../components/Login";
 import {fetchLogin } from "../actions/restaurantActions";
 import AdminComponent from "../components/AdminComponent";
