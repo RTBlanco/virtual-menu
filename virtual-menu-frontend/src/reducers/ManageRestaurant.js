@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-function restaurantReducer(state = {name: "", categories: [], foods: [], loading: false, about: ""}, action) {
+function restaurantReducer(state = {name: "", categories: [], foods: [], loading: false, about: "", image: null}, action) {
   let index
   let category
   let indexOfCategory
@@ -24,7 +24,8 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
         categories: action.categories,
         foods: action.foods,
         about: action.about,
-        loading: false
+        loading: false,
+        image: action.image
       }
 
     case 'EDIT_RESTAURANT':
@@ -32,6 +33,7 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
         ...state,
         name: action.name,
         about: action.about,
+        image: action.image,
         loading: false
       }
 

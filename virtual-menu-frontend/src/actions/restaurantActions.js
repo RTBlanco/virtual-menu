@@ -17,7 +17,7 @@ export function fetchResturant() {
     fetch(`${BASE_URL}/resturants/1`)
       .then(response => response.json())
       .then(restaurant => {
-        dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories, about: restaurant.about})
+        dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories, about: restaurant.about, image: restaurant.image})
       })
       .catch(er => console.log('error',er))
   }
@@ -198,13 +198,13 @@ export function editRestaurant(res) {
       method: 'PATCH',
       headers: {
         "Authorization": `Bearer ${jwt}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "Accept" : "application/json",
-      }, body: JSON.stringify(res)
+      }, body: res
     })
       .then(response => response.json())
       .then(restaurant => {
-        dispatch({type: "EDIT_RESTAURANT", name: restaurant.name, about: restaurant.about})
+        dispatch({type: "EDIT_RESTAURANT", name: restaurant.name, about: restaurant.about, image: restaurant.image})
       })
       .catch(er => console.log('error',er))
   }
