@@ -61,6 +61,13 @@
     -1px 1px 0 #000,
     1px 1px 0 #000; */
 }
+.card img{
+  height: 85%;
+}
+
+.card h1 {
+  width: 52%;
+}
 
 .display a {
   text-decoration: none;
