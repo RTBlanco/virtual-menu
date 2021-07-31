@@ -19,7 +19,7 @@ class Food < ApplicationRecord
       calories: self.calories,
       category: self.category.id,
       description: self.description,
-      image: "https://res.cloudinary.com/djgdxb8xo/image/upload/v1627716720/burger_vbwrtx.jpg"
+      image: self.get_image_url
     }
   end
   
