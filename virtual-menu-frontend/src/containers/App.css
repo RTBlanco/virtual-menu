@@ -38,6 +38,18 @@
 
 .card {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 200px;
+  border: 1px solid rgb(75, 75, 75);
+  border-radius: 10px;
+  margin-bottom: 20px; 
+  box-shadow: 2px 2px 20px grey
+}
+
+.food-card {
+  display: flex;
   justify-content: space-between;
   width: 400px;
   height: 200px;
