@@ -145,20 +145,20 @@ export function addFood(food) {
   }
 } 
 
-export function editFood(food) {
-  food = {
-    ...food, 
-    category_id: food.category
-  }
+export function editFood(food, foodForm) {
+  // food = {
+  //   ...food, 
+  //   category_id: food.category
+  // }
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
     fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods/${food.id}`, {
       method: 'PATCH',
       headers: {
         "Authorization": `Bearer ${jwt}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "Accept" : "application/json",
-      }, body: JSON.stringify(food)
+      }, body: foodForm
     })
     .then(response => response.json())
     .then(req => {

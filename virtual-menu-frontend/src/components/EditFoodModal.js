@@ -18,7 +18,7 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData(e.target)
-    dispatch(editFood(formData))
+    dispatch(editFood(state, formData))
     closeModal()
   }
 
@@ -46,6 +46,7 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
       >
         <div className="new-category-model">
           <div className="new-cat-header">Edit Category</div>
+          <img src={state.image} alt="food" />
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="category-name">Name of Food: </label>
             <input onChange={handleOnChange} type="text" name="name" id="category-name" defaultValue={state.name}/>
@@ -58,7 +59,7 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
               <input onChange={handleOnChange} type="text" name='calories' id='calories' defaultValue={state.calories}/>
             </div>
             {/* adding images here */}
-            <label for="image">Image</label>
+            <label htmlFor="image">Image</label>
             <input type="file" name="image" id="image" accept="image/*"/>
             <button className="create-btn" type="Submit" >Edit!</button>
             <button className="red-btn" onClick={handleClick}>Delete</button>

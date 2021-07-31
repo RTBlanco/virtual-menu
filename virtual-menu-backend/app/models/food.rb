@@ -17,7 +17,7 @@ class Food < ApplicationRecord
       name: self.name,
       cost: self.cost,
       calories: self.calories,
-      category: self.category.id,
+      category_id: self.category.id,
       description: self.description,
       image: self.get_image_url
     }
