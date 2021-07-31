@@ -17,7 +17,8 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(editFood(state))
+    const formData = new FormData(e.target)
+    dispatch(editFood(formData))
     closeModal()
   }
 
@@ -56,6 +57,9 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
               <label htmlFor="calories">Cals:</label>
               <input onChange={handleOnChange} type="text" name='calories' id='calories' defaultValue={state.calories}/>
             </div>
+            {/* adding images here */}
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" accept="image/*"/>
             <button className="create-btn" type="Submit" >Edit!</button>
             <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>
