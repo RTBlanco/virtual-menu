@@ -53,6 +53,7 @@
   border-radius: 10px;
   margin-bottom: 20px; 
   box-shadow: 2px 2px 20px grey;
+  padding: 10px 16px;
   /* color: #f2f2f2; */
   /* text-shadow:
     3px 3px 0 #000,
@@ -61,13 +62,13 @@
     -1px 1px 0 #000,
     1px 1px 0 #000; */
 }
-.card img{
+/* .card img{
   height: 85%;
 }
 
 .card h1 {
   width: 52%;
-}
+} */
 
 .display a {
   text-decoration: none;
