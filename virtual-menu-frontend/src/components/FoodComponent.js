@@ -26,6 +26,9 @@ const FoodComponent = ({match, categories, loading}) => {
     <div className="food-display">
       <h3>{food.name}</h3>
       <div className="food-info">
+        <div className="food-img-comp">
+          <img src={food.image} alt="food" />
+        </div>
         <div className="food-details-show">
           <span>{food.calories} Cals</span>
           <span>Cost: {showCurrency()}</span>
