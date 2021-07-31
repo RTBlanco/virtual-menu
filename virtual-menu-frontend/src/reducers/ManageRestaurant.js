@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-function restaurantReducer(state = {name: "", categories: [], foods: [], loading: false, about: "", image: null}, action) {
+function restaurantReducer(state = {name: "", categories: [], loading: false, about: "", image: null}, action) {
   let index
   let category
   let indexOfCategory
@@ -22,7 +22,6 @@ function restaurantReducer(state = {name: "", categories: [], foods: [], loading
       return {
         name: action.name,
         categories: action.categories,
-        foods: action.foods,
         about: action.about,
         loading: false,
         image: action.image
