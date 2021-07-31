@@ -90,7 +90,7 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
       }
 
     case "REMOVE_FOOD":
-      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category)
+      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category_id)
       category = state.categories[indexOfCategory]
 
       return {

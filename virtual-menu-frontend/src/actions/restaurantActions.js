@@ -124,18 +124,18 @@ export function editCategory(category, state) {
 } 
 
 
-export function addFood(food) {
-  food.cost = parseFloat(food.cost).toFixed(2)
+export function addFood(food, id) {
+  // food.cost = parseFloat(food.cost).toFixed(2)
   
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
-    fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods`, {
+    fetch(`${BASE_URL}/resturants/1/categories/${id}/foods`, {
       method: 'POST',
       headers: {
         "Authorization": `Bearer ${jwt}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "Accept" : "application/json",
-      },body: JSON.stringify(food)
+      },body: food
     })
     .then(response => response.json())
     .then(req => {
@@ -169,10 +169,10 @@ export function editFood(food, foodForm) {
 }
 
 export function removeFood(food) {
-  food = {
-    ...food, 
-    category_id: food.category
-  }
+  // food = {
+  //   ...food, 
+  //   category_id: food.category
+  // }
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
     fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods/${food.id}`, {
