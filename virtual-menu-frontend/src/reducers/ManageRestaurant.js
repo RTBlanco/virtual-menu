@@ -2,10 +2,20 @@ import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   restaurant: restaurantReducer,
-  admin: adminReducer
+  admin: adminReducer,
+  error: errorReducer
 })
 
 export default rootReducer;
+
+function errorReducer(state = {message: ""}, action) {
+  switch(action.type) {
+    case "INCORRECT_LOGIN":
+      return {
+        message: action.message
+      }
+  }
+}
 
 function restaurantReducer(state = {name: "", categories: [], loading: false, about: "", image: null}, action) {
   let index

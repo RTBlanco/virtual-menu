@@ -39,7 +39,10 @@ export function fetchLogin(admin) {
       console.log(req)
       dispatch({type: "LOGGED_IN", id: req.admin.id, name: req.admin.name, username: req.admin.username, token: req.jwt})
     })
-    .catch(error => console.log("error",error))
+    .catch(error => {
+      console.log("error",error)
+      return false
+    })
   }
 }
 
