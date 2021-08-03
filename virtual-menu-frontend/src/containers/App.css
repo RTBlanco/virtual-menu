@@ -299,8 +299,6 @@
 .errors {
   margin: 5%;
   height: 15%;
-  /* position: absolute; */
-  position: relative;
 }
 
 .login-form {
