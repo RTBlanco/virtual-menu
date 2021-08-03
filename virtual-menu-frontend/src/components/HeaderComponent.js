@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 
 const HeaderComponent = ({resturant}) => {
 
@@ -15,7 +16,9 @@ const HeaderComponent = ({resturant}) => {
   console.log(resturant.image)
   return (
     <div style={headerStyle} className="header">
-      <h1 >{resturant.name}</h1>
+      <Link to={"/"} >
+        <h1 >{resturant.name}</h1>
+      </Link>
     </div>
   )
 }
