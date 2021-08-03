@@ -52,7 +52,7 @@ const Login = ({login, cred}) => {
               <input type="text" name="username" id="username" onChange={handleOnchange} />
 
               <label htmlFor="password">Password:</label>
-              <input type={checked ? 'password' : 'text'} name="password" id="password" onChange={handleOnchange} />
+              <input type={checked ? 'text' : 'password'} name="password" id="password" onChange={handleOnchange} />
               <div className="view-password-setting">
                 <label htmlFor="show-password">Show password:</label>
                 <input onChange={toggle} type="checkbox" name="show-password" id="show-password" />
