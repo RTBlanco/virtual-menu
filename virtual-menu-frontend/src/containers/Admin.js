@@ -8,7 +8,13 @@ const Admin = () => {
 
   const dispatch = useDispatch();
 
-  const loggedIn = useSelector( state => state.admin.loggedIn)
+  const cred = useSelector( state => {
+    // console.log(state)
+    return {
+      valid: state.admin.loggedIn,
+      error: state.error
+    }
+  })
   
 
   const login = (admin) => {
@@ -19,7 +25,7 @@ const Admin = () => {
 
   return (
     <>
-    {loggedIn ? <AdminComponent /> : <Login login={login}/>}
+    {cred.valid ? <AdminComponent /> : <Login cred={cred} login={login}/>}
     </>
   )
 }

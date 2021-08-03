@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import ErrorMessage from "./ErrorMessage";
 
-const Login = ({login}) => {
+const Login = ({login, cred}) => {
 
   const [state, setState] = useState({
     username: "",
     password: "",
-    checked: true
   })
+
+  const [checked, setChecked] = useState(false);
 
   const handleOnchange = (e) => {
     setState({
@@ -18,44 +19,44 @@ const Login = ({login}) => {
   }
 
   const toggle = () => {
-    setState(prevState => {
-      return {
-        ...state,
-        checked: !prevState.checked
-      }
-    })
+    setChecked(prev => !prev)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     login(state)
-    // const error = useSelector(state)
-    // if (!error) {
-      
-    // }
+  }
+
+  const showError = () => {
+    console.log('cred=> ',cred)
+    if (!cred.valid) {
+      return <ErrorMessage message={cred.error} />
+    }
   }
 
   return (
-    <div className="login-area">
-      <div className="login-card">
-        <div className="login-header">
-          Login
-        </div>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input type="text" name="username" id="username" onChange={handleOnchange} />
-
-          <label htmlFor="password">Password:</label>
-          <input type={state.checked ? 'password' : 'text'} name="password" id="password" onChange={handleOnchange} />
-          <div className="view-password-setting">
-            <label htmlFor="show-password">Show password:</label>
-            <input onChange={toggle} type="checkbox" name="show-password" id="show-password" />
+    <>
+      {showError()}
+      <div className="login-area">
+        <div className="login-card">
+          <div className="login-header">
+            Login
           </div>
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </div>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <label htmlFor="username">Username:</label>
+            <input type="text" name="username" id="username" onChange={handleOnchange} />
 
+            <label htmlFor="password">Password:</label>
+            <input type={checked ? 'password' : 'text'} name="password" id="password" onChange={handleOnchange} />
+            <div className="view-password-setting">
+              <label htmlFor="show-password">Show password:</label>
+              <input onChange={toggle} type="checkbox" name="show-password" id="show-password" />
+            </div>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </>
   
   )
 }

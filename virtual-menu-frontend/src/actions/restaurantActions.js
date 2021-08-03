@@ -24,7 +24,6 @@ export function fetchResturant() {
 }
 
 export function fetchLogin(admin) {
-  
   return (dispatch) => {
     dispatch({type: "LOGGING_IN"})
     fetch(`${BASE_URL}/resturants/1/login`,{
@@ -34,13 +33,19 @@ export function fetchLogin(admin) {
         "Accept" : "application/json",
       },body: JSON.stringify(admin)
     })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        return response.json().then(req => {throw new Error(`${req.message}`)})
+      }
+    })
     .then(req => {
       dispatch({type: "LOGGED_IN", id: req.admin.id, name: req.admin.name, username: req.admin.username, token: req.jwt})
     })
     .catch(error => {
-      console.log("error",error.message)
-      dispatch({type: "INCORRECT_LOGGIN", message: error.message})
+      console.log("error =>",error)
+      dispatch({type: "INCORRECT_LOGIN", message: error.message})
     })
   }
 }
