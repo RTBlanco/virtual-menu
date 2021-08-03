@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import ErrorMessage from "./ErrorMessage";
 
 const Login = ({login}) => {
 
@@ -27,6 +29,10 @@ const Login = ({login}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(state)
+    // const error = useSelector(state)
+    // if (!error) {
+      
+    // }
   }
 
   return (

@@ -118,7 +118,7 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
   }
 }
 
-function adminReducer(state = {id:"",  name: "", username: "", token:"", loading: false}, action ) {
+function adminReducer(state = {id:"",  name: "", username: "", token:"", loading: false, loggedIn: false}, action ) {
   switch(action.type) {
     case "LOGGING_IN":
       return {
@@ -134,7 +134,8 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
         name: action.name,
         username: action.username,
         token: action.token,
-        loading: false
+        loading: false,
+        loggedIn: true
       }
 
     case 'GETTING_ADMIN':
@@ -154,7 +155,7 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
 
     case "LOGOUT":
       window.sessionStorage.clear()
-      return {id:"",  name: "", username: "", token:"", loading: false}
+      return {id:"",  name: "", username: "", token:"", loading: false, loggedIn: false}
 
 
     case "EDIT_ADMIN":
@@ -165,7 +166,6 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
         username: action.username,
         loading: false
       }
-
 
     default:
       return state
