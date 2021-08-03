@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
+
 function errorReducer(state = null, action) {
   switch(action.type) {
     case "INCORRECT_LOGIN":
