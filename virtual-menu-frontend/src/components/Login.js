@@ -38,13 +38,13 @@ const Login = ({login, cred}) => {
 
   return (
     <>
-      {showError()}
       <div className="login-area">
         <div className="login-card">
           <div className="login-header">
             Login
           </div>
           <form className="login-form" onSubmit={handleSubmit}>
+            {showError()}
             <label htmlFor="username">Username:</label>
             <input type="text" name="username" id="username" onChange={handleOnchange} />
 
