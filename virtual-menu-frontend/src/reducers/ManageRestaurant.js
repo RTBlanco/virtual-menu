@@ -8,12 +8,12 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-function errorReducer(state = {message: ""}, action) {
+function errorReducer(state = null, action) {
   switch(action.type) {
     case "INCORRECT_LOGIN":
-      return {
-        message: action.message
-      }
+      return action.message
+    default:
+      return false
   }
 }
 
