@@ -8,7 +8,8 @@ const Admin = () => {
 
   const dispatch = useDispatch();
 
-  const loggedIn = useSelector( state => state.loggedIn)
+  const loggedIn = useSelector( state => state.admin.loggedIn)
+  
 
   const login = (admin) => {
     dispatch(fetchLogin(admin))
