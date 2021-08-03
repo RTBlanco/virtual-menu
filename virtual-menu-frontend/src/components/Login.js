@@ -43,19 +43,21 @@ const Login = ({login, cred}) => {
           <div className="login-header">
             Login
           </div>
-          <form className="login-form" onSubmit={handleSubmit}>
+          <div className="login-body">
             {showError()}
-            <label htmlFor="username">Username:</label>
-            <input type="text" name="username" id="username" onChange={handleOnchange} />
+            <form className="login-form" onSubmit={handleSubmit}>
+              <label htmlFor="username">Username:</label>
+              <input type="text" name="username" id="username" onChange={handleOnchange} />
 
-            <label htmlFor="password">Password:</label>
-            <input type={checked ? 'password' : 'text'} name="password" id="password" onChange={handleOnchange} />
-            <div className="view-password-setting">
-              <label htmlFor="show-password">Show password:</label>
-              <input onChange={toggle} type="checkbox" name="show-password" id="show-password" />
-            </div>
-            <button type="submit">Login</button>
-          </form>
+              <label htmlFor="password">Password:</label>
+              <input type={checked ? 'password' : 'text'} name="password" id="password" onChange={handleOnchange} />
+              <div className="view-password-setting">
+                <label htmlFor="show-password">Show password:</label>
+                <input onChange={toggle} type="checkbox" name="show-password" id="show-password" />
+              </div>
+              <button type="submit">Login</button>
+            </form>
+          </div>
         </div>
       </div>
     </>
