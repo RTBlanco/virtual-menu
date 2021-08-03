@@ -17,14 +17,13 @@ export function fetchResturant() {
     fetch(`${BASE_URL}/resturants/1`)
       .then(response => response.json())
       .then(restaurant => {
-        dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories, about: restaurant.about})
+        dispatch({type: "ADDING_RESTAURANT", name: restaurant.name, categories: restaurant.categories, about: restaurant.about, image: restaurant.image})
       })
       .catch(er => console.log('error',er))
   }
 }
 
 export function fetchLogin(admin) {
-  
   return (dispatch) => {
     dispatch({type: "LOGGING_IN"})
     fetch(`${BASE_URL}/resturants/1/login`,{
@@ -34,12 +33,20 @@ export function fetchLogin(admin) {
         "Accept" : "application/json",
       },body: JSON.stringify(admin)
     })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        return response.json().then(req => {throw new Error(`${req.message}`)})
+      }
+    })
     .then(req => {
-      console.log(req)
       dispatch({type: "LOGGED_IN", id: req.admin.id, name: req.admin.name, username: req.admin.username, token: req.jwt})
     })
-    .catch(error => console.log("error",error))
+    .catch(error => {
+      console.log("error =>",error)
+      dispatch({type: "INCORRECT_LOGIN", message: error.message})
+    })
   }
 }
 
@@ -124,18 +131,18 @@ export function editCategory(category, state) {
 } 
 
 
-export function addFood(food) {
-  food.cost = parseFloat(food.cost).toFixed(2)
+export function addFood(food, id) {
+  // food.cost = parseFloat(food.cost).toFixed(2)
   
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
-    fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods`, {
+    fetch(`${BASE_URL}/resturants/1/categories/${id}/foods`, {
       method: 'POST',
       headers: {
         "Authorization": `Bearer ${jwt}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "Accept" : "application/json",
-      },body: JSON.stringify(food)
+      },body: food
     })
     .then(response => response.json())
     .then(req => {
@@ -145,20 +152,20 @@ export function addFood(food) {
   }
 } 
 
-export function editFood(food) {
-  food = {
-    ...food, 
-    category_id: food.category
-  }
+export function editFood(food, foodForm) {
+  // food = {
+  //   ...food, 
+  //   category_id: food.category
+  // }
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
     fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods/${food.id}`, {
       method: 'PATCH',
       headers: {
         "Authorization": `Bearer ${jwt}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "Accept" : "application/json",
-      }, body: JSON.stringify(food)
+      }, body: foodForm
     })
     .then(response => response.json())
     .then(req => {
@@ -169,10 +176,10 @@ export function editFood(food) {
 }
 
 export function removeFood(food) {
-  food = {
-    ...food, 
-    category_id: food.category
-  }
+  // food = {
+  //   ...food, 
+  //   category_id: food.category
+  // }
   return (dispatch) => {
     dispatch({type: "LOADING_RESTAURANT"})
     fetch(`${BASE_URL}/resturants/1/categories/${food.category_id}/foods/${food.id}`, {
@@ -198,13 +205,13 @@ export function editRestaurant(res) {
       method: 'PATCH',
       headers: {
         "Authorization": `Bearer ${jwt}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         "Accept" : "application/json",
-      }, body: JSON.stringify(res)
+      }, body: res
     })
       .then(response => response.json())
       .then(restaurant => {
-        dispatch({type: "EDIT_RESTAURANT", name: restaurant.name, about: restaurant.about})
+        dispatch({type: "EDIT_RESTAURANT", name: restaurant.name, about: restaurant.about, image: restaurant.image})
       })
       .catch(er => console.log('error',er))
   }

@@ -22,7 +22,7 @@ const Foods = ({match, categories, loading}) => {
         </Link>
       ))}
     </div>
-)
+  )
 }
 
 export default Foods;

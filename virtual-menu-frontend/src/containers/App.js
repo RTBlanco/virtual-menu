@@ -16,6 +16,7 @@ function App() {
 
   const restaurant = useSelector( (state) => {
     return {
+      image: state.restaurant.image,
       about: state.restaurant.about,
       name: state.restaurant.name,
       loading: state.restaurant.loading,

@@ -1,6 +1,8 @@
 class Food < ApplicationRecord
   include Rails.application.routes.url_helpers
 
+  # used fake image for testing images
+
   belongs_to :category
 
   has_one_attached :image
@@ -15,8 +17,9 @@ class Food < ApplicationRecord
       name: self.name,
       cost: self.cost,
       calories: self.calories,
-      category: self.category.id,
-      description: self.description
+      category_id: self.category.id,
+      description: self.description,
+      image: self.get_image_url
     }
   end
   

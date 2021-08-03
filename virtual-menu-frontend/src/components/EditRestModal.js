@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Modal from 'react-modal';
 import { useDispatch } from "react-redux";
 import { editRestaurant } from "../actions/restaurantActions";
@@ -17,7 +17,8 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editRestaurant(state))
+    const formData = new FormData(e.target)
+    dispatch(editRestaurant(formData))
     closeModal()
   }
 
@@ -36,6 +37,8 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
             <input onChange={handleOnChange} type="text" name="name" id="category-name" defaultValue={state.name} />
             <label htmlFor="about">about:</label>
             <textarea type="text" onChange={handleOnChange} name="about" id="about" defaultValue={state.about}  rows="8" cols="50"/>
+            <label htmlFor="image">Image</label>
+            <input type="file" name="image" id="image" accept="image/*"/>
             <button className="create-btn" type="submit" >Edit!</button>
           </form>
         </div>

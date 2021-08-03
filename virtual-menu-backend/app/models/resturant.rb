@@ -14,7 +14,8 @@ class Resturant < ApplicationRecord
     {
       name: self.name,
       categories: self.categories.map{|cat| cat.serialize_one},
-      about: self.about
+      about: self.about,
+      image: self.get_image_url
     }
   end
 

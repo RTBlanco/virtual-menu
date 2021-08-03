@@ -2,12 +2,23 @@ import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   restaurant: restaurantReducer,
-  admin: adminReducer
+  admin: adminReducer,
+  error: errorReducer
 })
 
 export default rootReducer;
 
-function restaurantReducer(state = {name: "", categories: [], loading: false, about: ""}, action) {
+
+function errorReducer(state = null, action) {
+  switch(action.type) {
+    case "INCORRECT_LOGIN":
+      return action.message
+    default:
+      return false
+  }
+}
+
+function restaurantReducer(state = {name: "", categories: [], loading: false, about: "", image: null}, action) {
   let index
   let category
   let indexOfCategory
@@ -23,7 +34,8 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
         name: action.name,
         categories: action.categories,
         about: action.about,
-        loading: false
+        loading: false,
+        image: action.image
       }
 
     case 'EDIT_RESTAURANT':
@@ -31,6 +43,7 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
         ...state,
         name: action.name,
         about: action.about,
+        image: action.image,
         loading: false
       }
 
@@ -58,7 +71,7 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
       }
 
     case "ADD_FOOD":
-      index = state.categories.findIndex(cat => cat.id === action.payload.category)
+      index = state.categories.findIndex(cat => cat.id === action.payload.category_id)
       category = state.categories[index]
 
       return {
@@ -72,9 +85,9 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
       }
 
     case "EDIT_FOOD":
-      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category)
+      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category_id)
       category = state.categories[indexOfCategory]
-
+    
       let indexOfFood = category.foods.findIndex(food => food.id === action.payload.id)
 
       return {
@@ -88,7 +101,7 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
       }
 
     case "REMOVE_FOOD":
-      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category)
+      indexOfCategory = state.categories.findIndex(cat => cat.id === action.payload.category_id)
       category = state.categories[indexOfCategory]
 
       return {
@@ -106,7 +119,7 @@ function restaurantReducer(state = {name: "", categories: [], loading: false, ab
   }
 }
 
-function adminReducer(state = {id:"",  name: "", username: "", token:"", loading: false}, action ) {
+function adminReducer(state = {id:"",  name: "", username: "", token:"", loading: false, loggedIn: false}, action ) {
   switch(action.type) {
     case "LOGGING_IN":
       return {
@@ -122,7 +135,8 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
         name: action.name,
         username: action.username,
         token: action.token,
-        loading: false
+        loading: false,
+        loggedIn: true
       }
 
     case 'GETTING_ADMIN':
@@ -142,7 +156,7 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
 
     case "LOGOUT":
       window.sessionStorage.clear()
-      return {id:"",  name: "", username: "", token:"", loading: false}
+      return {id:"",  name: "", username: "", token:"", loading: false, loggedIn: false}
 
 
     case "EDIT_ADMIN":
@@ -153,7 +167,6 @@ function adminReducer(state = {id:"",  name: "", username: "", token:"", loading
         username: action.username,
         loading: false
       }
-
 
     default:
       return state
