@@ -292,15 +292,23 @@
   box-shadow: 2px 2px 20px grey
 }
 
+.login-body {
+  width: 40%;
+}
+
+.errors {
+  margin: 5%;
+  height: 15%;
+  /* position: absolute; */
+  position: relative;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
   margin-top: 15%;
-  width: 50%;
-
+  width: 100%;
 }
-
-
 
 .login-form button {
   margin-top: 15px;

@@ -44,7 +44,9 @@ const Login = ({login, cred}) => {
             Login
           </div>
           <div className="login-body">
-            {showError()}
+            <div className="errors">
+              {showError()}
+            </div>
             <form className="login-form" onSubmit={handleSubmit}>
               <label htmlFor="username">Username:</label>
               <input type="text" name="username" id="username" onChange={handleOnchange} />
