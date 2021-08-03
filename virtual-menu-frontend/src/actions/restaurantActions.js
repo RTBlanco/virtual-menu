@@ -40,8 +40,8 @@ export function fetchLogin(admin) {
       dispatch({type: "LOGGED_IN", id: req.admin.id, name: req.admin.name, username: req.admin.username, token: req.jwt})
     })
     .catch(error => {
-      console.log("error",error)
-      return false
+      console.log("error",error.message)
+      dispatch({type: "INCORRECT_LOGGIN", message: error.message})
     })
   }
 }
