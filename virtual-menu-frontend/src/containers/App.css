@@ -299,6 +299,7 @@
 .errors {
   margin: 5%;
   height: 15%;
+  color: red;
 }
 
 .login-form {
