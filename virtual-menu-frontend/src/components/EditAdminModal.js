@@ -35,7 +35,7 @@ const EditAdminModal = ({admin, closeModal, modalIsOpen}) => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        <div className="modal">
+        <div className="new-category-model">
           <div className="new-cat-header">Edit Admin</div>
           <form onSubmit={handleSubmit} className="new-cat-form">
             <label htmlFor="name">Name: </label>
