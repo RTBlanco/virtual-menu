@@ -186,7 +186,7 @@
   font-size: large;
 }
 
-.new-cat-modal-overlay {
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -198,7 +198,7 @@
   align-items: center;
 }
 
-.new-cat-modal {
+.modal {
   position: absolute;
   border: 1px solid;
   height: 70%;
@@ -208,6 +208,7 @@
   border-radius: 10px
 }
 
+/* New Cat */
 .new-cat-header {
   height: 40px;
   background-color: #333;
@@ -236,6 +237,97 @@
 .new-cat-form input {
   margin-bottom: 40px;
 }
+
+/* Cat */
+.cat-header {
+  height: 40px;
+  background-color: #333;
+  border-top-right-radius: 7px 8px;
+  border-top-left-radius: 7px 8px;
+  text-align: center;
+  color: #f2f2f2;
+  font-weight: 600;
+  font-size: large;
+}
+
+.cat-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 15% 40px;
+}
+
+.cat-form label {
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: larger;
+  text-align: center;
+} 
+
+.cat-form input {
+  margin-bottom: 40px;
+}
+
+/* New Food  */
+.new-food-header {
+  height: 40px;
+  background-color: #333;
+  border-top-right-radius: 7px 8px;
+  border-top-left-radius: 7px 8px;
+  text-align: center;
+  color: #f2f2f2;
+  font-weight: 600;
+  font-size: large;
+}
+
+.new-food-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 15% 40px;
+}
+
+.new-food-form label {
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: larger;
+  text-align: center;
+}
+
+.new-food-form input {
+  margin-bottom: 40px;
+}
+
+/* Food */
+.food-header {
+  height: 40px;
+  background-color: #333;
+  border-top-right-radius: 7px 8px;
+  border-top-left-radius: 7px 8px;
+  text-align: center;
+  color: #f2f2f2;
+  font-weight: 600;
+  font-size: large;
+}
+
+.food-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 15% 40px;
+}
+
+.food-form label {
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: larger;
+  text-align: center;
+}
+
+.food-form input {
+  margin-bottom: 40px;
+}
+
 
 .create-btn {
   width: 100%;

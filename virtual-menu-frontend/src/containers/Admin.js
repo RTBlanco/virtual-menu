@@ -22,7 +22,7 @@ const Admin = () => {
 
   return (
     <>
-    {cred.valid ? <AdminComponent /> : <Login cred={cred} login={login}/>}
+    {cred.valid || window.sessionStorage.getItem('token') ? <AdminComponent /> : <Login cred={cred} login={login}/>}
     </>
   )
 }

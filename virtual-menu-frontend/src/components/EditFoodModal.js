@@ -40,9 +40,9 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
     <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        className="new-cat-modal"
-        overlayClassName="new-cat-modal-overlay"
+        contentLabel="Modal"
+        className="modal"
+        overlayClassName="modal-overlay"
       >
         <div className="new-category-model">
           <div className="new-cat-header">Edit Category</div>

@@ -31,9 +31,9 @@ const EditAdminModal = ({admin, closeModal, modalIsOpen}) => {
     <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        className="new-cat-modal"
-        overlayClassName="new-cat-modal-overlay"
+        contentLabel="Modal"
+        className="modal"
+        overlayClassName="modal-overlay"
       >
         <div className="modal">
           <div className="new-cat-header">Edit Admin</div>
