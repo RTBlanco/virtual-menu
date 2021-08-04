@@ -36,6 +36,12 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
     return Money.format(state.cost)
   }
 
+  const backgroundImage = {
+    backgroundImage: `url(${state.image})`,
+    backgroundSize: '100% 100%'
+  }
+  
+
   return (
     <Modal
         isOpen={modalIsOpen}
@@ -45,9 +51,9 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
         overlayClassName="modal-overlay"
       >
         <div>
-          <div className="new-food-header">Edit Food</div>
-          <img src={state.image} alt="food" />
-          <form onSubmit={handleSubmit} className="new-food-form">
+          <div className="food-header">Edit Food</div>
+          {/* <img src={state.image} alt="food" /> */}
+          <form onSubmit={handleSubmit} className="food-form">
             <label htmlFor="food-name">Name of Food: </label>
             <input onChange={handleOnChange} type="text" name="name" id="food-name" defaultValue={state.name}/>
             <label htmlFor="description">Description:</label>
@@ -59,8 +65,10 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
               <input onChange={handleOnChange} type="text" name='calories' id='calories' defaultValue={state.calories}/>
             </div>
             {/* adding images here */}
-            <label htmlFor="image">Image</label>
-            <input type="file" name="image" id="image" accept="image/*"/>
+            <label style={backgroundImage} className="image-label" htmlFor="image">
+              <input type="file" name="image" id="image" accept="image/*"/>
+              Image
+            </label>
             <button className="create-btn" type="Submit" >Edit!</button>
             <button className="red-btn" onClick={handleClick}>Delete</button>
           </form>

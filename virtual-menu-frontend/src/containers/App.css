@@ -288,7 +288,7 @@
 }
 
 .new-food-form label {
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   font-weight: 700;
   font-size: larger;
   text-align: center;
@@ -318,7 +318,6 @@
 }
 
 .food-form label {
-  margin-bottom: 40px;
   font-weight: 700;
   font-size: larger;
   text-align: center;
@@ -326,6 +325,14 @@
 
 .food-form input {
   margin-bottom: 40px;
+}
+
+.food-cost-cal {
+  display: flex;
+}
+
+.food-cost-cal input {
+  width: 100%;
 }
 
 /* Admin */
@@ -515,4 +522,19 @@
 .food-img-comp {
   display: flex;
   justify-content: center;
+}
+
+.image-label {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 18% 21%;
+  cursor: pointer;
+  width: fit-content;
+  /* height: 20%; */
+  margin: -7% 0% 3% 0%;
+  align-self: center;
+}
+
+.image-label input {
+  display: none;
 }
