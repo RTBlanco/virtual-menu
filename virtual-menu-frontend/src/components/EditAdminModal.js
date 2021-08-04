@@ -35,9 +35,9 @@ const EditAdminModal = ({admin, closeModal, modalIsOpen}) => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        <div className="new-category-model">
-          <div className="new-cat-header">Edit Admin</div>
-          <form onSubmit={handleSubmit} className="new-cat-form">
+        <div>
+          <div className="admin-header">Edit Admin</div>
+          <form onSubmit={handleSubmit} className="admin-form">
             <label htmlFor="name">Name: </label>
             <input onChange={handleOnChange} type="text" name="name" id="name" defaultValue={state.name} />
             <label htmlFor="username">Username: </label>
