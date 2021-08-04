@@ -33,9 +33,9 @@ const EditCategoryModal = ({category, modalIsOpen, closeModal}) => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        <div className="new-category-model">
-          <div className="new-cat-header">Edit Category</div>
-          <form onSubmit={handleSubmit} className="new-cat-form">
+        <div>
+          <div className="cat-header">Edit Category</div>
+          <form onSubmit={handleSubmit} className="cat-form">
             <label htmlFor="category-name">Name of Category: </label>
             <input onChange={handleOnChange} type="text" name="category" id="category-name" value={state.name}/>
             <button className="create-btn" type="Submit" >Edit!</button>
