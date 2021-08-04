@@ -30,11 +30,11 @@ const EditRestModal = ({restaurant, modalIsOpen, closeModal}) => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        <div className="new-category-model">
-          <div className="new-cat-header">Edit Restaurant</div>
-          <form onSubmit={handleSubmit} className="new-cat-form">
-            <label htmlFor="category-name">Name of Restaurant: </label>
-            <input onChange={handleOnChange} type="text" name="name" id="category-name" defaultValue={state.name} />
+        <div>
+          <div className="res-header">Edit Restaurant</div>
+          <form onSubmit={handleSubmit} className="res-form">
+            <label htmlFor="restaurant-name">Name of Restaurant: </label>
+            <input onChange={handleOnChange} type="text" name="name" id="restaurant-name" defaultValue={state.name} />
             <label htmlFor="about">about:</label>
             <textarea type="text" onChange={handleOnChange} name="about" id="about" defaultValue={state.about}  rows="8" cols="50"/>
             <label htmlFor="image">Image</label>

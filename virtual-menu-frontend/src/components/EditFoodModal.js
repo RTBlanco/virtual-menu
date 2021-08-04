@@ -44,12 +44,12 @@ const EditFoodModal = ({food, modalIsOpen, closeModal}) => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        <div className="new-category-model">
-          <div className="new-cat-header">Edit Category</div>
+        <div>
+          <div className="new-food-header">Edit Food</div>
           <img src={state.image} alt="food" />
-          <form onSubmit={handleSubmit} className="new-cat-form">
-            <label htmlFor="category-name">Name of Food: </label>
-            <input onChange={handleOnChange} type="text" name="name" id="category-name" defaultValue={state.name}/>
+          <form onSubmit={handleSubmit} className="new-food-form">
+            <label htmlFor="food-name">Name of Food: </label>
+            <input onChange={handleOnChange} type="text" name="name" id="food-name" defaultValue={state.name}/>
             <label htmlFor="description">Description:</label>
             <textarea type="text" onChange={handleOnChange} name="description" id="food-description" defaultValue={state.description}  rows="4" cols="50"/>
             <div className="food-cost-cal">
