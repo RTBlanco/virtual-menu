@@ -1,7 +1,7 @@
 class Food < ApplicationRecord
   include Rails.application.routes.url_helpers
 
-  # used fake image for testing images
+  validates :name, :cost, :calories, :description, :image, presence: true
 
   belongs_to :category
 

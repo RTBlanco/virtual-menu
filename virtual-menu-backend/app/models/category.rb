@@ -5,6 +5,7 @@ class Category < ApplicationRecord
   has_many :foods, dependent: :destroy
   has_one_attached :image
 
+  validates :name, presence: true
   # accepts_nested_attributes_for :foods, reject_if: proc { |attributes| attributes['name'].blank? }
 
   def get_image_url

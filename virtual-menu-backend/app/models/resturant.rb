@@ -4,6 +4,7 @@ class Resturant < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :admins, dependent: :destroy
 
+
   has_one_attached :image
 
   def get_image_url
