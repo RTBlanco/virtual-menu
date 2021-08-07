@@ -1,7 +1,7 @@
 # virtual-menu
 This is a simple web app that shows has a virtual menu for restaurants which is easier to read and is better then the pdf most restaurants use 
 
-## Installation and Usage
+## Installation
 First, fork and clone the repository and where on your local machine. After it has been correctly cloned, navigate into the virtual-menu/virtual-menu-backend directory and in your terminal execute:
 
     $ bundle install 
